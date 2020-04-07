@@ -17,12 +17,6 @@ app.use(session({
 	resave: false,
 	saveUninitialized: false
 }))
-
-const authController = require('./controllers/authController')
-app.use('/auth', authController)
-const userController = require('./controllers/userController')
-app.use('/users', userController)
-
 app.use((req, res, next) => {
 	res.locals.loggedIn = req.session.loggenIn
 	res.locals.username = req.session.username
@@ -32,6 +26,12 @@ app.use((req, res, next) => {
 
 	next()
 })
+
+const authController = require('./controllers/authController')
+app.use('/auth', authController)
+const userController = require('./controllers/userController')
+app.use('/users', userController)
+
 
 app.get('/', (req, res) => {
 	res.render('home.ejs')

@@ -15,5 +15,6 @@
 
 
 		<p>(<a href="/users/<%= user._id %>/edit">EDIT</a>)</p>
-
+		<form method="POST" action="/users/<%= user._id %>/?_method=DELETE">
+			<button>Delete user!</button>
 <%- include('../partials/footer.ejs') %>

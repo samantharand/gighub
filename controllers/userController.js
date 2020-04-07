@@ -61,5 +61,25 @@ router.put('/:id', async (req, res, next) => {
 })
 
 // destroy -- destroy all events and bands associated 
+router.delete('/:id', async (req, res, next) => {
+  try {
+  		// if(req.session.userId == req.params.id){
+  			// console.log(user)
+  			await User.findByIdAndRemove(req.params.id)
+  			console.log(req.session)
+  			res.redirect('/auth/logout')
+  		// }else{
+  		// 	res.direct('/auth/login')
+  		// }
+  	}catch(error){
+  		next(error)
+  	}
+  })
+
+
+
+
+
+
 
 module.exports = router
