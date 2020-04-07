@@ -1,6 +1,11 @@
+main {
+	height: 95vh;
+}
+
 header {
 	display: flex;
 	justify-content: space-between;
+	background-color: thistle;
 }
 
 a {
@@ -9,4 +14,5 @@ a {
 
 footer {
 	background-color: thistle;
+	text-align: center;
 }

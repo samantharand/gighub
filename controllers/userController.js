@@ -60,29 +60,6 @@ router.put('/:id', async (req, res, next) => {
 	}
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// destroy
+// destroy -- destroy all events and bands associated 
 
 module.exports = router
