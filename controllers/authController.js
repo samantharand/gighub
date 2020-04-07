@@ -40,7 +40,7 @@ router.post('/register', async (req, res, next) => {
 			req.session.username = createdUser.username
 
 			req.session.message = "account created"
-
+			console.log(createdUser);
 			res.redirect('/')
 		}
 		// redirect to home page with message welcoming them

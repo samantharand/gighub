@@ -1,0 +1,17 @@
+<%- include('../partials/header.ejs') %>
+
+	<h2><%= user.username %></h2>
+
+	<div>
+		<img src="<%= user.profilePhoto %>" height="300">
+	</div>
+
+	<div>
+		<p>age: <%= user.age %></p>
+	</div>
+	<div>
+		<p>location: <%= user.location %></p>
+	</div>
+
+
+<%- include('../partials/footer.ejs') %>

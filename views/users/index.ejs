@@ -1,0 +1,9 @@
+<%- include('../partials/header.ejs') %>
+
+<h2>USER</h2>
+
+<% users.forEach(user => { %>
+	<a href="/users/<%= user._id %>"><%= user.username %></a>
+<% }) %>
+
+<%- include('../partials/footer.ejs') %>
