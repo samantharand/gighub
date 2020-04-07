@@ -5,6 +5,9 @@ const PORT = process.env.PORT
 
 require('./db/db')
 
+app.get('/', (req, res) => {
+	res.render('home.ejs')
+})
 
 
 app.listen(PORT, () => {
