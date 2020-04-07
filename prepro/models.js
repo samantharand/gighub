@@ -8,10 +8,14 @@ band: {
 		required: true
 	},
 	bandPhoto: String,
-	members: String,
+	// members: String,
 	formed: Number,
 	genre: String,
 	location: String,
+	user: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "User"
+	},
 }
 
 event: {
@@ -23,6 +27,11 @@ event: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "Band",
 		required: true
+	},
+	user:{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "User",
+		// required: true
 	},
 	date:{
 		type: Date,
@@ -36,7 +45,7 @@ event: {
 	details: String,
 	capacity: Number,
 	comments: [Comment.schema],
-	attendees: [User.schema],
+	attendees: [User.schema], // weird mongo query to list all shows " i'm " attending
 }
 
 user: {
@@ -49,17 +58,9 @@ user: {
 		required: true
 	},
 	profilePhoto: String,
-	age: Number,
+	dateOfBirth: Date,
 	location: String,
 	events: [Events.schema],
-	band: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "Band",
-	},
-	event: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "Event"
-	},
 }
 
 photo: {
@@ -89,6 +90,10 @@ comment: {
   	user: {
     	type: mongoose.Schema.Types.ObjectId,
     	ref: 'User'
+  	},
+  	event: {
+  		type: mongoose.Schema.Types.ObjectId,
+     	ref: 'Event'
   	}
 }
 

@@ -1,0 +1,59 @@
+<%- include('../partials/header.ejs') %>
+
+	<h2>SIGN UP</h2>
+	<p>* marks required</p>
+
+	<form method="POST" action="/auth/register">
+		<fieldset>
+			<div>
+				<label for="username">*USERNAME:</label>
+				<input 
+					type="text" 
+					name="username" 
+					id="username" 
+					placeholder="username" 
+					required
+				/ >
+			</div>
+			<div>
+				<label for="password">*PASSWORD:</label>
+				<input 
+					type="password" 
+					name="password" 
+					id="password" 
+					placeholder="password" 
+					required
+				/ >
+			</div>
+			<div>
+				<label for="picture">PROFILE PIC:</label>
+				<input 
+					type="text" 
+					name="picture" 
+					id="picture" 
+					placeholder="profile pic" 
+				/ >
+			</div>
+			<div>
+				<label for="location">LOCATION:</label>
+				<input 
+					type="text" 
+					name="location" 
+					id="location" 
+					placeholder="zip code" 
+				/ >
+			</div>
+			<div>
+				<label for="age">AGE:</label>
+				<input 
+					type="number" 
+					name="age" 
+					id="age" 
+					placeholder="age" 
+				/ >
+			</div>
+			<button>CREATE ACCOUNT</button>
+		</fieldset>
+	</form>
+
+<%- include('../partials/footer.ejs') %>
