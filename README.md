@@ -10,26 +10,29 @@
 
 
 ### MODELS
-* general users -- username, age, location, favorite venues/bands
-* events -- name, band(s), location (with privl), atendees (with priv), admin
-* bands (event admins) -- name, origin, members
+* general users -- username, age, location, bands, events, prof pic
+* events -- name, band(s), location (with privl), atendees (with priv), admin, pic
+* bands -- name, origin, members, pic
 * comments - text, user, date
-* photo - user posted, event, date posted, title, upload???
+* photo - user posted, event, date posted, title
 
 
 ### USER STORIES
 * IF LOGGED IN
-	* bands are able to create events that have atendees 
-	* bands are able to post updates about shows 
-	* bands show pages have embedded or linked-to music, list of upcoming shows, band members
-	* bands can edit or delete events theyve posted
-	* event show pages have location(hidden unless invited), neighboods, bands attending, attendees(with links to their show pages)
-	* general users can RSVP for events and comments on events
-	* general users show pages have events they've attended and events they've RSVPd for
-	* general users can list favorite bands and venues and post photos of shows they've been to
-	* IF INVITED - general users can see location of events
+	* Bands are able to create events that have atendees 
+	* Bands are able to post updates about shows 
+	* Bands show pages have embedded or linked-to music, 
+	* Bands show pages have list of upcoming shows
+	* Event show pages have location(hidden unless invited), neighboods, bands attending, attendees(with links to their show pages)
+	* Users can edit events theyve posted
+	* Users can delete events theyve posted
+	* Users can request address of events  
+	* Users can comments on events
+	* Users show pages have events they've attended and events they've RSVPd for
+	* Users can list favorite bands and venues 
+	* Users can post photos of shows they've been to 
 * IF LOGGED OUT 
-	* You can see band and event index and show pages
+	* You can see band and event index and show pages 
 
 ### WIREFRAMES
 
@@ -50,6 +53,7 @@
 * bands can delete photos posted from events theyve hosted
 * users can be band members and linked on page
 * map populates based on zip code
+* invite model
 
 #### QUESTIONS
 * link users to event model? 

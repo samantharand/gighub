@@ -1,4 +1,4 @@
-band {
+band: {
 	name:{
 		type: String,
 		required: true
@@ -6,14 +6,15 @@ band {
 	password:{
 		type: String,
 		required: true
-	}
+	},
+	bandPhoto: String,
+	members: String,
 	formed: Number,
 	genre: String,
-	music: String,
-	location: String
+	location: String,
 }
 
-event{
+event: {
 	name:{
 		type: String,
 		required: true
@@ -31,11 +32,14 @@ event{
 			type: String,
 			required: true
 	},
+	eventPhoto: String,
+	details: String,
+	capacity: Number,
 	comments: [Comment.schema],
-	attendees: []
+	attendees: [User.schema],
 }
 
-user{
+user: {
 	username:{
 		type: String,
 		required: true
@@ -44,12 +48,21 @@ user{
 		type: String,
 		required: true
 	},
+	profilePhoto: String,
 	age: Number,
 	location: String,
-	events: []
+	events: [Events.schema],
+	band: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "Band",
+	},
+	event: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "Event"
+	},
 }
 
-photo{
+photo: {
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "User",
@@ -63,17 +76,11 @@ photo{
 	date:{
 		type: Date,
 		default: Date.now
-	}
+	},
 	title: String,
 }
 
-invite: {
-	event reference
-	
-}
-
-
-comment:{
+comment: {
  	text: String,
   	date: {
     	type: Date,
@@ -84,3 +91,9 @@ comment:{
     	ref: 'User'
   	}
 }
+
+// events are private by default, anyone with an account can attend, since these are small shows we can use array of attendees in event model
+
+// invite: {
+// 	event reference
+// }
