@@ -26,13 +26,13 @@ router.post('/register', async (req, res, next) => {
 		// else they dont
 		} else {
 			// store the username and password and id loggedIn
-			const createdUser = {
+			const createdUser = await User.create({
 				username: desiredUsername,
 				password: desiredPassword,
 				profilePhoto: req.body.profilePhoto,
 				age: req.body.age,
 				location: req.body.location
-			}
+			})
 
 			req.session.loggedIn = true
 			req.session.userId = createdUser._id

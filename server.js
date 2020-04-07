@@ -18,6 +18,8 @@ app.use(session({
 
 const authController = require('./controllers/authController')
 app.use('/auth', authController)
+// const userController = require('./controllers/userController')
+// app.use('/users', userController)
 
 app.use((req, res, next) => {
 	res.locals.loggedIn = req.session.loggenIn
