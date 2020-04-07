@@ -1,5 +1,31 @@
 <%- include('../partials/header.ejs') %>
 
-LOGIN
+<h2>LOGIN</h2>
+<%= message %>
+<form method="POST" action="/auth/login">
+	<fieldset>
+		<div>
+			<label for="username">USERNAME:</label>
+			<input 
+				type="text" 
+				name="username" 
+				id="username" 
+				placeholder="username" 
+				required
+			/ >
+		</div>
+		<div>
+			<label for="password">PASSWORD:</label>
+			<input 
+				type="password" 
+				name="password" 
+				id="password" 
+				placeholder="password" 
+				required
+			/ >
+		</div>
+	</fieldset>
+	<button>LOG IN</button>
+</form>
 
 <%- include('../partials/footer.ejs') %>

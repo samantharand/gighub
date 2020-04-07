@@ -1,15 +1,14 @@
 const express = require('express')
 const router = express.Router()
+const bcrypt = require('bcrypt')
 const User = require('../models/user')
 
-router.get('/login', (req, res) => {
-	res.render('auth/login.ejs')
-})
-
+// registration page
 router.get('/register', (req, res) => {
 	res.render('auth/register.ejs')
 })
 
+// complete registration
 router.post('/register', async (req, res, next) => {
 	try {
 		// desired username and password
@@ -25,10 +24,12 @@ router.post('/register', async (req, res, next) => {
 			res.redirect('/auth/register')
 		// else they dont
 		} else {
+			const salt = bcrypt.genSaltSync(10)
+			const hashedPassword = bcrypt.hashSync(desiredPassword, salt)
 			// store the username and password and id loggedIn
 			const createdUser = await User.create({
 				username: desiredUsername,
-				password: desiredPassword,
+				password: hashedPassword,
 				profilePhoto: req.body.profilePhoto,
 				age: req.body.age,
 				location: req.body.location
@@ -48,12 +49,48 @@ router.post('/register', async (req, res, next) => {
 	}
 })
 
+// login page
+router.get('/login', (req, res) => {
+	message = req.session.message
+	req.session.message = undefined
+	res.render('auth/login.ejs', {
+		message: message
+	})
+})
 
+// login - check requirements 
+router.post('/login', async (req, res, next) => {
+	try {
+		const user = await User.findOne({ username: req.body.username })
 
+		if(!user) {
+			console.log("bad username");
+			req.session.message = "Invalid Username or Password"
+			res.redirect('/auth/login')
+		} else {
+    		const loginInfoIsValid = bcrypt.compareSync(req.body.password, user.password)
+    		if(loginInfoIsValid) {
+    			req.session.loggedIn = true
+    			req.session.userId = user._id
+    			req.session.username = user.username
 
+    			req.session.message = `Welcome back, ${user.username}`
+    			res.redirect('/')
+    		} else {
+    			console.log("bad password");
+    			req.session.message = "Invalid Username or Password"
+    			res.redirect('/auth/login')
+    		}
+		}
+	} catch (error) {
+		next(error)
+	}
+})
 
-
-
-
+// destroy
+router.get('/logout', async (req, res) => {
+	await req.session.destroy()
+	res.redirect('/auth/login')
+})
 
 module.exports = router
