@@ -4,11 +4,13 @@ const app = express()
 const PORT = process.env.PORT
 const session = require('express-session')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 require('./db/db')
 
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(methodOverride('_method'))
 
 app.use(session({
 	secret: process.env.SESSION_SECRET,
