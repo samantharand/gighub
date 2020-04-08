@@ -6,4 +6,7 @@
 
 
 <a href="/bands/<%=band.id%>/edit">Edit</a>
+<form method="POST" action="/bands/<%=band.id%>?_method=DELETE">
+	<button>DELETE</button>
+</form>
 <%- include('../partials/footer.ejs') %>
