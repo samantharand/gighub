@@ -47,6 +47,23 @@ router.get('/:id', async (req, res, next) => {
   		next(error)
   	}
   })
+router.get("/:id/edit", async (req, res, next) => {
+  try {
+  	const foundBand = await Band.findById(req.params.id).populate('user')
+  	res.render('bands/edit.ejs', {band:foundBand})
+  		
+  	}catch(error){
+  		next(error)
+  	}
+  })
+router.put("/:id", async (req, res, next) => {
+  try {
+  		const updatedBand = await Band.findByIdAndUpdate(req.params.id, req.body, {new:true})
+  		res.redirect(`/bands/${updatedBand._id}`)
+  	}catch(error){
+  		next(error)
+  	}
+  })
 
 
 module.exports = router
