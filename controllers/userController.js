@@ -81,7 +81,7 @@ router.delete('/:id', async (req, res, next) => {
   	}
   })
 
-// Attendees show up in event page TEST
+// Attendees show up in event page 
 router.post('/:eventId', async (req, res, next) => {
 	try {
 		const event = await Event.findById(req.params.eventId)
