@@ -1,7 +1,25 @@
 <%- include('../partials/header.ejs') %>
 <h2><%= event.name%></h2>
-<p> When: <%= event.date%>
-</p> Where: <%= event.location%>
+<p> When: <%= event.date%> </p>
+<p> Where: <%= event.location%> </p>
+
+<form method="POST" action="/users/<%=event.id%>">
+	<button>Attend</button>
+</form>
+
+<p>Attendees</p>
+
+<% event.attendees.forEach((attendee) => { %>
+	<%= event.user.username %>
+<% }) %>
+
+
+
+<br>
+
+
+
+
 
 hosted by: <%= event.user.username%>
 <% if(username) {%>
@@ -12,11 +30,11 @@ hosted by: <%= event.user.username%>
 <%}%>
 <ul>
 	<% event.comments.forEach((comment)=> {%>
-	<li>
-		<%= comment.text%>
-		
-		<small>(<%= comment.date.toLocaleString() %>) by <%=comment.user.username%> </small>
-	</li>
+		<li>
+			<%= comment.text%>
+			
+			<small>(<%= comment.date.toLocaleString() %>) by <%=comment.user.username%> </small>
+		</li>
 	<%})%>
 </ul>
 

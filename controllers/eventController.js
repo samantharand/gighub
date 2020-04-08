@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Event = require("../models/event")
+const Event = require('../models/event')
 const User = require('../models/user')
 
 router.get('/', async (req, res, next) => {
@@ -13,6 +13,7 @@ router.get('/', async (req, res, next) => {
   		next(error)
   	}
 })
+
 //create
 router.get('/new', async (req, res) => {
   if (req.session.userId){
@@ -48,6 +49,7 @@ router.post('/', async (req, res, next) => {
   	}
 
 })
+
 //show
 router.get('/:id', async (req, res, next) => {
   try {
@@ -83,6 +85,7 @@ router.put('/:id', async (req, res, next) => {
   		next(error)
   	}
   })
+
 router.delete("/:id", async (req, res, next) => {
   try {
   		const foundEvent = await Event.findById(req.params.id)
@@ -96,4 +99,6 @@ router.delete("/:id", async (req, res, next) => {
   		next(error)
   	}
   })
+
+
 module.exports = router
