@@ -58,4 +58,30 @@ router.get('/:id', async (req, res, next) => {
   		next(error)
   	}
 })
+
+//update
+router.get("/:id/edit", async (req, res, next) => {
+  try {
+  		const foundEvent = await Event.findById(req.params.id).populate('user')
+  		if(req.session.userId == foundEvent.user._id){
+  			res.render('events/edit.ejs', {event: foundEvent})
+  		}else{
+  			req.session.message= "you must be the host to edit"
+  			res.redirect('/auth/login')
+  		}
+  	}catch(error){
+  		next(error)
+  	}
+  })
+
+router.put('/:id', async (req, res, next) => {
+  try {
+  		const updatedEvent = await Event.findByIdAndUpdate(req.params.id, req.body,{new:true})
+
+  		res.redirect(`/events/${updatedEvent._id}`)
+  	}catch(error){
+  		next(error)
+  	}
+  })
+
 module.exports = router

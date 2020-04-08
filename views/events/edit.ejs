@@ -1,0 +1,72 @@
+<%- include('../partials/header.ejs') %>
+<h2>EDIT YOUR EVENT!</h2>
+
+<form method="POST" action="/events/<%=event._id%>?_method=PUT">
+	<fieldset>
+		<legend>Add a new event</legend>
+		<div>
+			 <label for="name">*NAME</label>
+        	<input 
+        		type="text" 
+        		name="name" 
+        		id="name" 
+        		value="<%=event.name%>" 
+        	/>
+		</div>
+    	<div>
+    		 <label for="date">*DATE</label>
+    		 <input 
+    		 	type="date" 
+    		 	name="date" 
+    		 	id="date"
+          value="<%=event.date%>"
+          /> 
+          <!-- need to figure out how to set value to date -->
+
+    		 />
+    	</div>
+    	<div>
+    		<label for="location">*LOCATION</label>
+    		<input 
+    			type="string" 
+    			name="location"
+    			id="location"
+          value="<%=event.location%>" 
+    		/>
+    	</div>
+    	<div>
+    		<label for="eventPhoto">Event Photo</label>
+    		<input 
+    			type="string" 
+    			name="eventPhoto"
+    			id="eventPhoto"
+          value="<%=event.eventPhoto%>" 
+    			/>
+    	</div>
+  		<div>
+  			<label for="details">DETAILS</label>
+  			<input 
+  				type="text" 
+  				name="details" 
+  				id="details" 
+          value="<%=event.details%>" 
+  			/>
+  		</div>
+  		<div>
+  			<label for="capacity">CAPACITY</label>
+  			<input 
+  				type="number" 
+  				name="capacity" 
+  				id="capacity" 
+          value="<%=event.capacity%>" 
+  			/>
+  		</div>
+  		<button>EDIT THE EVENT</button>
+	</fieldset>
+</form>
+
+
+
+
+
+<%- include('../partials/footer.ejs') %>
