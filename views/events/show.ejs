@@ -1,28 +1,46 @@
 <%- include('../partials/header.ejs') %>
 <h2><%= event.name%></h2>
-<p> When: <%= event.date%>
-</p> Where: <%= event.location%>
+<p> When: <%= event.date %> </p>
+<p> Where: <%= event.location %> </p>
 
-hosted by: <%= event.user.username%>
-<% if(username) {%>
-	<form method="POST" action="/comments/<%=event.id%>">
-		<textarea name="text" placeholder="Questions? Thoughts?"></textarea>
-	<button>Add a comment</button>
+<form method="POST" action="/users/<%= event.id %>">
+	<button>Attend</button>
 </form>
-<%}%>
+
+<p>Attendees</p>
+
 <ul>
-	<% event.comments.forEach((comment)=> {%>
-	<li>
-		<%= comment.text%>
-		
-		<small>(<%= comment.date.toLocaleString() %>) by <%=comment.user.username%> </small>
-	</li>
-	<%})%>
+	<% for(let i = 0; i < event.attendees.length; i++) { %>
+		<li><%= event.attendees[i].username %></li>
+	<% } %>
 </ul>
 
-<small><a href="/events/<%=event._id%>/edit">Edit!</a>
 
-<form method="POST" action="/events/<%=event._id%>?_method=DELETE">
+
+<p>what is happeing</p>
+
+
+
+hosted by: <%= event.user.username %>
+<% if(username) {%>
+	<form method="POST" action="/comments/<%= event.id %>">
+		<textarea name="text" placeholder="Questions? Thoughts?"></textarea>
+		<button>Add a comment</button>
+	</form>
+<%}%>
+<ul>
+	<% event.comments.forEach((comment)=> { %>
+		<li>
+			<%= comment.text%>
+			
+			<small>(<%= comment.date.toLocaleString() %>) by <%= comment.user.username %> </small>
+		</li>
+	<% }) %>
+</ul>
+
+<small><a href="/events/<%= event._id %>/edit">Edit!</a>
+
+<form method="POST" action="/events/<%= event._id %>?_method=DELETE">
 	<button>Delete this event!</button>
 </form>
 

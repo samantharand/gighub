@@ -3,6 +3,7 @@ const router = express.Router()
 const User = require('../models/user')
 const Event = require('../models/event')
 const Band = require('../models/band')
+
 router.get('/', async (req, res, next) => {
 	try {
 		const foundUsers = await User.find()
@@ -80,7 +81,21 @@ router.delete('/:id', async (req, res, next) => {
   	}
   })
 
+// Attendees show up in event page TEST
+router.post('/:eventId', async (req, res, next) => {
+	try {
+		const event = await Event.findById(req.params.eventId)
+		const attendee = await User.findById(req.session.userId)
+		
+		event.attendees.push(attendee)
+		await event.save()
 
+		res.redirect('/events/' + event.id)
+		console.log("new event.attendees[0].username", event.attendees[0].username);
+	} catch (error) {
+		next(error)
+	}
+})
 
 
 

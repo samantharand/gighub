@@ -12,8 +12,10 @@ router.post('/:eventId', async (req, res, next) => {
   			text: req.body.text,
   			user: req.session.userId
   		}
+
   		event.comments.push(commentToCreate)
   		await event.save()
+      
   		res.redirect('/events/' + event.id)
   	}catch(error){
   		next(error)
