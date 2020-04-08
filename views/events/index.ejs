@@ -1,6 +1,13 @@
 <%- include('../partials/header.ejs') %>
-
-
+<h2> ALL EVENTS</h2>
+<ul>
+	<% events.forEach((event) => { %>
+	<li>
+	<a href="/events/<%=event._id%>"><%=event.name%>
+	</a>		
+	</li>
+	<%})%>
+</ul>
 
 
 <%- include('../partials/footer.ejs') %>

@@ -13,6 +13,7 @@ router.get('/', async (req, res, next) => {
   		next(error)
   	}
 })
+//create
 router.get('/new', async (req, res) => {
   if (req.session.userId){
   	res.render('events/new.ejs')
@@ -21,7 +22,6 @@ router.get('/new', async (req, res) => {
   }
 		
 })
-
 
 router.post('/', async (req, res, next) => {
  	try {
@@ -48,5 +48,14 @@ router.post('/', async (req, res, next) => {
   	}
 
 })
-
+//show
+router.get('/:id', async (req, res, next) => {
+  try {
+  		const foundEvent = await Event.findById(req.params.id).populate('user')
+  		console.log(foundEvent)
+  		res.render('events/show.ejs', {event: foundEvent})
+  	}catch(error){
+  		next(error)
+  	}
+})
 module.exports = router
