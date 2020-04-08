@@ -85,11 +85,13 @@ router.delete('/:id', async (req, res, next) => {
 router.post('/:eventId', async (req, res, next) => {
 	try {
 		const event = await Event.findById(req.params.eventId)
-		const user = await User.findById(req.session.userId)
-		event.attendees.push(user)
+		const attendee = await User.findById(req.session.userId)
+		
+		event.attendees.push(attendee)
 		await event.save()
-		console.log(event);
+
 		res.redirect('/events/' + event.id)
+		console.log("new event.attendees[0].username", event.attendees[0].username);
 	} catch (error) {
 		next(error)
 	}
