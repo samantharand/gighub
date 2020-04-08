@@ -33,6 +33,8 @@ const userController = require('./controllers/userController')
 app.use('/users', userController)
 const eventController = require('./controllers/eventController')
 app.use('/events', eventController)
+const bandController = require('./controllers/bandController')
+app.use('/bands', bandController)
 
 app.get('/', (req, res) => {
 	res.render('home.ejs')
