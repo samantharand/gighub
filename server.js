@@ -1,10 +1,14 @@
 require('dotenv').config()
 const express = require('express')
-const app = express()
-const PORT = process.env.PORT
+const multer = require('multer')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const PORT = process.env.PORT
+const upload = multer({
+	dest: 'uploads/'
+})
+const app = express()
 
 require('./db/db')
 
@@ -17,6 +21,7 @@ app.use(session({
 	resave: false,
 	saveUninitialized: false
 }))
+
 app.use((req, res, next) => {
 	res.locals.loggedIn = req.session.loggenIn
 	res.locals.username = req.session.username
@@ -41,7 +46,13 @@ app.use('/comments', commentController)
 app.get('/', (req, res) => {
 	res.render('home.ejs')
 	console.log(req.session);
+	// res.send(__dirname + '/views/home.ejs')
 })
+
+app.post('/', upload.single('file-to-upload'), (req, res) => {
+	res.redirect('/')
+})
+
 
 app.get('*', (req, res) => {
 	res.render('404.ejs')
