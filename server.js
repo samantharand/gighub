@@ -31,7 +31,8 @@ const authController = require('./controllers/authController')
 app.use('/auth', authController)
 const userController = require('./controllers/userController')
 app.use('/users', userController)
-
+const eventController = require('./controllers/eventController')
+app.use('/events', eventController)
 
 app.get('/', (req, res) => {
 	res.render('home.ejs')
