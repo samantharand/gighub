@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
-
+const Event = require('../models/event')
+const Band = require('../models/band')
 router.get('/', async (req, res, next) => {
 	try {
 		const foundUsers = await User.find()
@@ -66,6 +67,8 @@ router.delete('/:id', async (req, res, next) => {
   try {
   		if(req.session.userId == req.params.id){
   			// console.log(user)
+  			await Band.remove({user: req.params.id})
+  			await Event.remove({user:req.params.id})
   			await User.findByIdAndRemove(req.params.id)
   			console.log(req.session)
   			res.redirect('/auth/logout')
