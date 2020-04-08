@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Comment = require('./comment')
 const eventSchema = new mongoose.Schema({
 
 	name:{
@@ -26,7 +27,7 @@ const eventSchema = new mongoose.Schema({
 	eventPhoto: String,
 	details: String,
 	capacity: Number,
-	// comments: [Comment.schema],
+	comments: [Comment.schema],
 	// attendees: [User.schema], 
 })
 const Event = mongoose.model('Event', eventSchema)

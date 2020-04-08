@@ -51,7 +51,7 @@ router.post('/', async (req, res, next) => {
 //show
 router.get('/:id', async (req, res, next) => {
   try {
-  		const foundEvent = await Event.findById(req.params.id).populate('user')
+  		const foundEvent = await Event.findById(req.params.id).populate('user').populate('comments.user')
   		console.log(foundEvent)
   		res.render('events/show.ejs', {event: foundEvent})
   	}catch(error){

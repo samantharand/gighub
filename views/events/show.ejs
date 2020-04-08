@@ -4,11 +4,26 @@
 </p> Where: <%= event.location%>
 
 hosted by: <%= event.user.username%>
+<% if(username) {%>
+	<form method="POST" action="/comments/<%=event.id%>">
+		<textarea name="text" placeholder="Questions? Thoughts?"></textarea>
+	<button>Add a comment</button>
+</form>
+<%}%>
+<ul>
+	<% event.comments.forEach((comment)=> {%>
+	<li>
+		<%= comment.text%>
+		
+		<small>(<%= comment.date.toLocaleString() %>) by <%=comment.user.username%> </small>
+	</li>
+	<%})%>
+</ul>
 
 <small><a href="/events/<%=event._id%>/edit">Edit!</a>
 
 <form method="POST" action="/events/<%=event._id%>?_method=DELETE">
-	<button>Delete this photo!</button>
+	<button>Delete this event!</button>
 </form>
 
 
