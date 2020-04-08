@@ -7,4 +7,9 @@ hosted by: <%= event.user.username%>
 
 <small><a href="/events/<%=event._id%>/edit">Edit!</a>
 
+<form method="POST" action="/events/<%=event._id%>?_method=DELETE">
+	<button>Delete this photo!</button>
+</form>
+
+
 <%- include('../partials/footer.ejs') %>

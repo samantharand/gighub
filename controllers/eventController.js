@@ -83,5 +83,17 @@ router.put('/:id', async (req, res, next) => {
   		next(error)
   	}
   })
-
+router.delete("/:id", async (req, res, next) => {
+  try {
+  		const foundEvent = await Event.findById(req.params.id)
+  		if(req.session.userId == foundEvent.user._id){
+  			const deletedEvent = await Event.findByIdAndRemove(req.params.id)
+  			res.redirect('/events')
+  		}else{
+  			res.redirect('/auth/login')
+  		}
+  	}catch(error){
+  		next(error)
+  	}
+  })
 module.exports = router
