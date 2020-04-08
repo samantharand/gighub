@@ -5,18 +5,14 @@ const bandSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	password:{
-		type: String,
-		required: true
-	},
 	bandPhoto: String,
 	formed: Number,
 	genre: String,
-	location: String,
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "User"
-	}
+	},
+	song: String
 })
 
 const Band = mongoose.model('Band', bandSchema)
