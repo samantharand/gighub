@@ -38,6 +38,15 @@ router.post('/', async (req, res, next) => {
   	}
   })
 
+//show routes
+router.get('/:id', async (req, res, next) => {
+  try {
+  		const foundBand = await Band.findById(req.params.id).populate('user')
+  		res.render('bands/show.ejs', {band: foundBand})
+  	}catch(error){
+  		next(error)
+  	}
+  })
 
 
 module.exports = router
