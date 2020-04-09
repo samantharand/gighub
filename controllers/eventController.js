@@ -33,7 +33,11 @@ router.get('/', async (req, res, next) => {
 //create
 router.get('/new', async (req, res) => {
   if (req.session.userId){
-  	res.render('events/new.ejs')
+    const todaysDate = moment(Date.now()).utc().format("YYYY-MM-DD")
+    // const newDate = moment(foundEvent.date).utc().format("YYYY-MM-DD")
+  	res.render('events/new.ejs', {
+      todaysDate: todaysDate
+    })
   }else{
   	res.redirect('/auth/login')
   }
