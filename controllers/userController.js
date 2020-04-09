@@ -3,6 +3,10 @@ const router = express.Router()
 const User = require('../models/user')
 const Event = require('../models/event')
 const Band = require('../models/band')
+const multer = require('multer')
+const upload = multer({
+	dest: 'uploads/user'
+})
 
 router.get('/', async (req, res, next) => {
 	try {

@@ -13,6 +13,7 @@ const app = express()
 require('./db/db')
 
 app.use(express.static('public'))
+app.use('/uploads', express.static('uploads'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
 
@@ -46,10 +47,15 @@ app.use('/comments', commentController)
 app.get('/', (req, res) => {
 	res.render('home.ejs')
 	console.log(req.session);
-	// res.send(__dirname + '/views/home.ejs')
 })
 
 app.post('/', upload.single('file-to-upload'), (req, res) => {
+	console.log("req body V");
+	console.log(req.body)
+	console.log("req body ^"); 
+	console.log("req file V");
+	console.log(req.file)
+	console.log("req file ^"); 
 	res.redirect('/')
 })
 
