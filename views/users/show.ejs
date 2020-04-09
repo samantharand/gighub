@@ -13,6 +13,15 @@
 		<p>location: <%= user.location %></p>
 	</div>
 
+	<div>
+		<p>events attended:</p>
+		<!-- loop here -->
+	</div>
+
+	<div>
+		<p>photos uploaded:</p>
+		<!-- loop here -->
+	</div>
 
 		<p>(<a href="/users/<%= user._id %>/edit">EDIT</a>)</p>
 		<form method="POST" action="/users/<%= user._id %>/?_method=DELETE">

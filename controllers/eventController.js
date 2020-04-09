@@ -2,6 +2,21 @@ const express = require('express')
 const router = express.Router()
 const Event = require('../models/event')
 const User = require('../models/user')
+const multer = require('multer')
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './uploads/user')
+  },
+  filename: function(req, file, cb) {
+    cb(null, new Date().toISOString() + file.originalname) // new Date().toISOString() + 
+  }
+})
+
+const upload = multer({
+  storage: storage
+  // dest: 'uploads/'
+})
 
 router.get('/', async (req, res, next) => {
   try {
@@ -24,7 +39,7 @@ router.get('/new', async (req, res) => {
 		
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/', upload.single('eventPhoto'), async (req, res, next) => {
  	try {
   		
 	  		const eventToCreate = {
@@ -32,7 +47,7 @@ router.post('/', async (req, res, next) => {
 	  			user: req.session.userId,
 	  			date: req.body.date,
 	  			location: req.body.location,
-	  			eventPhoto: req.body.eventPhoto,
+	  			eventPhoto: req.file.path,
 	  			details: req.body.details,
 	  			capacity: req.body.capacity
 
@@ -62,7 +77,7 @@ router.get('/:id', async (req, res, next) => {
 })
 
 //update
-router.get("/:id/edit", async (req, res, next) => {
+router.get("/:id/edit",async (req, res, next) => {
   try {
   		const foundEvent = await Event.findById(req.params.id).populate('user')
   		if(req.session.userId == foundEvent.user._id){
@@ -76,8 +91,11 @@ router.get("/:id/edit", async (req, res, next) => {
   	}
   })
 
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', upload.single('eventPhoto'), async (req, res, next) => {
   try {
+      if(req.file){
+        req.body.eventPhoto = req.file.path
+      }
   		const updatedEvent = await Event.findByIdAndUpdate(req.params.id, req.body,{new:true})
 
   		res.redirect(`/events/${updatedEvent._id}`)

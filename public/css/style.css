@@ -22,6 +22,22 @@ a {
 	height: 250px;
 }
 
+.indexProfilePhoto {
+	height: 250px;
+}
+
+.userCardGrid {
+	display: flex;
+	justify-content: center;
+}
+
+.userCard {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid black;
+	margin: 5px;
+}
+
 img	{
 	padding: 5px;
 }

@@ -1,7 +1,7 @@
 <%- include('../partials/header.ejs') %>
 <h2>NEW EVENT</h2>
 
-<form method="POST" action="/events">
+<form method="POST" enctype="multipart/form-data" action="/events">
 	<fieldset>
 		<legend>Add a new event</legend>
 		<div>
@@ -30,15 +30,10 @@
     			placeholder="ENTER THE ADDRESS" 
     		/>
     	</div>
-    	<div>
-    		<label for="eventPhoto">Event Photo</label>
-    		<input 
-    			type="string" 
-    			name="eventPhoto"
-    			id="eventPhoto"
-    			placeholder="ADD A PIC!" 
-    			/>
-    	</div>
+      <div>
+        <label for="eventPhoto">DISPLAY PIC:</label>
+        <input type="file" id="eventPhoto" name="eventPhoto">
+      </div>
   		<div>
   			<label for="details">DETAILS</label>
   			<input 
