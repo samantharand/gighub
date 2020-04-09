@@ -20,7 +20,7 @@ const upload = multer({
 	// dest: 'uploads/'
 })
 
-router.get('/', requireAuth, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
 	try {
 		const foundUsers = await User.find()
 		console.log(foundUsers);
@@ -33,7 +33,7 @@ router.get('/', requireAuth, async (req, res, next) => {
 })
 
 // show
-router.get('/:id', async (req, res, next) => {
+router.get('/:id',requireAuth, async (req, res, next) => {
 	try {
 		const foundUser = await User.findById(req.params.id)
 
