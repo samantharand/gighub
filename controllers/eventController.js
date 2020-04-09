@@ -3,6 +3,7 @@ const router = express.Router()
 const Event = require('../models/event')
 const User = require('../models/user')
 const multer = require('multer')
+const moment = require('moment')
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -79,9 +80,15 @@ router.get('/:id', async (req, res, next) => {
 //update
 router.get("/:id/edit",async (req, res, next) => {
   try {
-  		const foundEvent = await Event.findById(req.params.id).populate('user')
-  		if(req.session.userId == foundEvent.user._id){
-  			res.render('events/edit.ejs', {event: foundEvent})
+      const foundEvent = await Event.findById(req.params.id).populate('user')
+  		
+  		const newDate = moment(foundEvent.date).utc().format("YYYY-MM-DD")
+
+      if(req.session.userId == foundEvent.user._id){
+  			res.render('events/edit.ejs', {
+          event: foundEvent, 
+          newDate: newDate
+        })
   		}else{
   			req.session.message= "you must be the host to edit"
   			res.redirect('/auth/login')

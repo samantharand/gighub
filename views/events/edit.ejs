@@ -10,7 +10,7 @@
         		type="text" 
         		name="name" 
         		id="name" 
-        		value="<%=event.name%>" 
+        		value="<%= event.name %>" 
         	/>
 		</div>
     	<div>
@@ -19,7 +19,7 @@
     		 	type="date" 
     		 	name="date" 
     		 	id="date"
-          value="<%= event.date %>"
+          value="<%= newDate %>"
           /> 
           <!-- need to figure out how to set value to date -->
     	</div>
@@ -29,7 +29,7 @@
     			type="string" 
     			name="location"
     			id="location"
-          value="<%=event.location%>" 
+          value="<%= event.location %>" 
     		/>
     	</div>
     	<div>
@@ -42,7 +42,7 @@
   				type="text" 
   				name="details" 
   				id="details" 
-          value="<%=event.details%>" 
+          value="<%= event.details %>" 
   			/>
   		</div>
   		<div>
@@ -51,7 +51,7 @@
   				type="number" 
   				name="capacity" 
   				id="capacity" 
-          value="<%=event.capacity%>" 
+          value="<%= event.capacity %>" 
   			/>
   		</div>
   		<button>EDIT THE EVENT</button>
