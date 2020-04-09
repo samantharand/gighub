@@ -32,7 +32,6 @@
 			
 			<button>Add a comment</button>
 		</form>
-	<%}%>
 	
 	<ul>
 		<% event.comments.forEach((comment)=> { %>
@@ -40,15 +39,19 @@
 				<%= comment.text%>
 				
 				<small>(<%= comment.date.toLocaleString() %>) by <%= comment.user.username %> </small>
+				<small><a href="/comments/<%=event.id%>/<%=comment.id%>/edit">edit</a></small>
 			</li>
 		<% }) %>
 	</ul>
-
+	<%}else{%>
+	<p>you must be logged into access comments</p>
+	<%}%>
+	<%if(event.user._id == userId){%>
 	<small><a href="/events/<%= event._id %>/edit">Edit!</a>
 
 	<form method="POST" action="/events/<%= event._id %>?_method=DELETE">
 		<button>Delete this event!</button>
 	</form>
-
+<%}%>
 
 <%- include('../partials/footer.ejs') %>

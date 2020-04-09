@@ -25,7 +25,7 @@ app.use(session({
 app.use((req, res, next) => {
 	res.locals.loggedIn = req.session.loggenIn
 	res.locals.username = req.session.username
-
+	res.locals.userId = req.session.userId
 	res.locals.message = req.session.message
 	req.session.message = null
 

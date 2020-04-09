@@ -4,6 +4,7 @@ const Event = require('../models/event')
 const User = require('../models/user')
 const multer = require('multer')
 const moment = require('moment')
+const requireAuth = require('../lib/requireAuth')
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -31,7 +32,7 @@ router.get('/', async (req, res, next) => {
 })
 
 //create
-router.get('/new', async (req, res) => {
+router.get('/new', requireAuth, async (req, res) => {
   if (req.session.userId){
     const todaysDate = moment(Date.now()).utc().format("YYYY-MM-DD")
     // const newDate = moment(foundEvent.date).utc().format("YYYY-MM-DD")

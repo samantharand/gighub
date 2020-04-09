@@ -4,6 +4,7 @@ const User = require('../models/user')
 const Event = require('../models/event')
 const Band = require('../models/band')
 const multer = require('multer')
+const requireAuth = require('../lib/requireAuth')
 
 const storage = multer.diskStorage({
 	destination: function(req, file, cb) {
@@ -32,7 +33,7 @@ router.get('/', async (req, res, next) => {
 })
 
 // show
-router.get('/:id', async (req, res, next) => {
+router.get('/:id',requireAuth, async (req, res, next) => {
 	try {
 		const foundUser = await User.findById(req.params.id)
 

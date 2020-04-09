@@ -3,6 +3,7 @@ const router = express.Router()
 const Photo = require('../models/photo')
 const User = require('../models/photo')
 const multer = require('multer')
+const requireAuth = require('../lib/requireAuth')
 
 const storage = multer.diskStorage({
 	destination: function(req, file, cb) {
@@ -32,7 +33,7 @@ router.get('/', async (req, res, next) => {
 })
 
 // new photo page
-router.get('/new', (req, res) => {
+router.get('/new', requireAuth, (req, res) => {
 	res.render('photos/new.ejs')
 })
 

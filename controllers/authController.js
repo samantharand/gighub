@@ -101,6 +101,8 @@ router.post('/login', async (req, res, next) => {
     			res.redirect('/auth/login')
     		}
 		}
+			console.log(req.session)
+
 	} catch (error) {
 		next(error)
 	}

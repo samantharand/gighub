@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 const Band = require('../models/band')
+const requireAuth = require('../lib/requireAuth')
+
 //index route
 router.get('/', async (req, res, next) => {
   try {
@@ -12,7 +14,7 @@ router.get('/', async (req, res, next) => {
   		next(error)
   	}
   })
-router.get('/new',  (req, res) => {
+router.get('/new', requireAuth,  (req, res) => {
   
   	res.render('bands/new.ejs')
   

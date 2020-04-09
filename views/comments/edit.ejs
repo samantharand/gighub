@@ -1,0 +1,11 @@
+<%- include('../partials/header.ejs') %>
+
+<form method="POST" action="/comments/<%=event.id%>/<%= comment.id %>?_method=PUT">
+			<textarea name="text" placeholder="Questions? Thoughts?"><%=comment.text%></textarea>
+			
+			<button>edit comment</button>
+		</form>
+
+		<form method="POST" action="/comments/<%= event.id %>/<%=comment.id%>?_method=DELETE">
+			<button>Delete comment!</button>
+<%- include('../partials/footer.ejs') %>
