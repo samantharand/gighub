@@ -2,11 +2,11 @@
 	
 	<h2> ALL PICS</h2>
 
-	<% photos.forEach((photo) => { %>
-		<div>
-			<img src="/<%= photo.pic %>" height="300">
-		</div>
-	<%})%>
+	<div class="photoGrid">
+		<% photos.forEach((photo) => { %>
+			<img class="photoGridPics" src="/<%= photo.pic %>" height="300">
+		<%})%>
+	</div>
 
 
 

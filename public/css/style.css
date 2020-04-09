@@ -1,5 +1,6 @@
 main {
 	height: 95vh;
+	overflow: scroll;
 }
 
 header {
@@ -9,6 +10,19 @@ header {
 }
 
 a {
+	padding: 5px;
+}
+
+.photoGrid {
+	display: flex;
+	justify-content: center;
+}
+
+.photoGridPics {
+	height: 250px;
+}
+
+img	{
 	padding: 5px;
 }
 
