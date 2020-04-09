@@ -5,16 +5,17 @@ const User = require('../models/user')
 const multer = require('multer')
 
 const storage = multer.diskStorage({
-	desination: function(req, file, cb) {
-		cb(null, './uploads/user')
+	destination: function(req, file, cb) {
+		cb(null, './uploads/')
 	},
 	filename: function(req, file, cb) {
-		cb(null, file.originalname) // new Date().toISOString() + 
+		cb(null, new Date().toISOString() + file.originalname) // new Date().toISOString() + 
 	}
 })
 
 const upload = multer({
 	storage: storage
+	// dest: 'uploads/'
 })
 
 // registration page
