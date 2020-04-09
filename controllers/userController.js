@@ -4,8 +4,19 @@ const User = require('../models/user')
 const Event = require('../models/event')
 const Band = require('../models/band')
 const multer = require('multer')
+
+const storage = multer.diskStorage({
+	destination: function(req, file, cb) {
+		cb(null, './uploads/user')
+	},
+	filename: function(req, file, cb) {
+		cb(null, new Date().toISOString() + file.originalname) // new Date().toISOString() + 
+	}
+})
+
 const upload = multer({
-	dest: 'uploads/user'
+	storage: storage
+	// dest: 'uploads/'
 })
 
 router.get('/', async (req, res, next) => {
@@ -56,8 +67,10 @@ router.get('/:id/edit', async (req, res, next) => {
 })
 
 // update
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', upload.single('profilePhoto'), async (req, res, next) => {
 	try {
+
+		req.body.profilePhoto = req.file.path
 		const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {new: true})
 		console.log("updateduser", updatedUser);
 		res.redirect(`/users/${updatedUser._id}`)
