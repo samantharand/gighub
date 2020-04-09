@@ -1,0 +1,8 @@
+<%- include('../partials/header.ejs') %>
+
+<form method="POST" action="/comments/<%= comment.id %>">
+			<textarea name="text" placeholder="Questions? Thoughts?"><%=comment.text%></textarea>
+			
+			<button>edit comment</button>
+		</form>
+<%- include('../partials/footer.ejs') %>
