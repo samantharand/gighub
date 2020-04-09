@@ -5,9 +5,6 @@ const session = require('express-session')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const PORT = process.env.PORT
-const upload = multer({
-	dest: 'uploads/'
-})
 const app = express()
 
 require('./db/db')
@@ -46,19 +43,7 @@ app.use('/comments', commentController)
 
 app.get('/', (req, res) => {
 	res.render('home.ejs')
-	console.log(req.session);
 })
-
-app.post('/', upload.single('file-to-upload'), (req, res) => {
-	console.log("req body V");
-	console.log(req.body)
-	console.log("req body ^"); 
-	console.log("req file V");
-	console.log(req.file)
-	console.log("req file ^"); 
-	res.redirect('/')
-})
-
 
 app.get('*', (req, res) => {
 	res.render('404.ejs')
