@@ -1,0 +1,13 @@
+<%- include('../partials/header.ejs') %>
+	
+	<h2> ALL PICS</h2>
+
+	<div class="photoGrid">
+		<% photos.forEach((photo) => { %>
+			<img class="photoGridPics" src="/<%= photo.pic %>" height="300">
+		<%})%>
+	</div>
+
+
+
+<%- include('../partials/footer.ejs') %>

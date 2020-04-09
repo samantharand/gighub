@@ -1,7 +1,7 @@
 <%- include('../partials/header.ejs') %>
 <h2>EDIT YOUR EVENT!</h2>
 
-<form method="POST" action="/events/<%=event._id%>?_method=PUT">
+<form method="POST" enctype="multipart/form-data" action="/events/<%=event._id%>?_method=PUT">
 	<fieldset>
 		<legend>Add a new event</legend>
 		<div>
@@ -10,7 +10,7 @@
         		type="text" 
         		name="name" 
         		id="name" 
-        		value="<%=event.name%>" 
+        		value="<%= event.name %>" 
         	/>
 		</div>
     	<div>
@@ -19,11 +19,9 @@
     		 	type="date" 
     		 	name="date" 
     		 	id="date"
-          value="<%=event.date%>"
+          value="<%= newDate %>"
           /> 
           <!-- need to figure out how to set value to date -->
-
-    		 />
     	</div>
     	<div>
     		<label for="location">*LOCATION</label>
@@ -31,25 +29,20 @@
     			type="string" 
     			name="location"
     			id="location"
-          value="<%=event.location%>" 
+          value="<%= event.location %>" 
     		/>
     	</div>
     	<div>
     		<label for="eventPhoto">Event Photo</label>
-    		<input 
-    			type="string" 
-    			name="eventPhoto"
-    			id="eventPhoto"
-          value="<%=event.eventPhoto%>" 
-    			/>
-    	</div>
+        <input type="file" id="eventPhoto" name="eventPhoto" value="<%= event.eventPhoto %>">
+      </div>
   		<div>
   			<label for="details">DETAILS</label>
   			<input 
   				type="text" 
   				name="details" 
   				id="details" 
-          value="<%=event.details%>" 
+          value="<%= event.details %>" 
   			/>
   		</div>
   		<div>
@@ -58,7 +51,7 @@
   				type="number" 
   				name="capacity" 
   				id="capacity" 
-          value="<%=event.capacity%>" 
+          value="<%= event.capacity %>" 
   			/>
   		</div>
   		<button>EDIT THE EVENT</button>

@@ -1,9 +1,18 @@
 <%- include('../partials/header.ejs') %>
 
-<h2>USER</h2>
+	<h2>USER</h2>
 
-<% users.forEach(user => { %>
-	<a href="/users/<%= user._id %>"><%= user.username %></a>
-<% }) %>
+	<div class="userCardGrid">
+
+		<% users.forEach(user => { %>
+
+			<div class="userCard">	
+				<a href="/users/<%= user._id %>"><img class="indexProfilePhoto" src="<%= user.profilePhoto %>"></a>
+				<a href="/users/<%= user._id %>"><%= user.username %></a>
+			</div>
+		
+		<% }) %>
+	
+	</div>
 
 <%- include('../partials/footer.ejs') %>

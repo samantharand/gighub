@@ -1,48 +1,54 @@
 <%- include('../partials/header.ejs') %>
-<h2><%= event.name %></h2>
-<p> When: <%= event.date %> </p>
-<p> Where: <%= event.location %> </p>
 
-<form method="POST" action="/users/<%= event.id %>">
-	<button>Attend</button>
-</form>
+	<div>
+		<img src="/<%= event.eventPhoto %>" height="300">
+	</div>
 
-<p>Attendees</p>
+	<h2><%= event.name %></h2>
+	
+	<p> When: <%= event.date.toLocaleString() %></p>
 
-<ul>
-	<% for(let i = 0; i < event.attendees.length; i++) { %>
-		<li><%= event.attendees[i].username %></li>
-	<% } %>
-</ul>
+	
+	<p> Where: <%= event.location %> </p>
 
-
-
-<p>what is happeing</p>
-
-
-
-hosted by: <%= event.user.username %>
-<% if(username) {%>
-	<form method="POST" action="/comments/<%= event.id %>">
-		<textarea name="text" placeholder="Questions? Thoughts?"></textarea>
-		<button>Add a comment</button>
+	<form method="POST" action="/users/<%= event.id %>">
+		<button>Attend</button>
 	</form>
-<%}%>
-<ul>
-	<% event.comments.forEach((comment)=> { %>
-		<li>
-			<%= comment.text%>
+
+	<p>Attendees</p>
+
+	<ul>
+		<% for(let i = 0; i < event.attendees.length; i++) { %>
+			<li>
+				<%= event.attendees[i].username %>	
+			</li>
+		<% } %>
+	</ul>
+
+	hosted by: <%= event.user.username %>
+	<% if(username) {%>
+		<form method="POST" action="/comments/<%= event.id %>">
+			<textarea name="text" placeholder="Questions? Thoughts?"></textarea>
 			
-			<small>(<%= comment.date.toLocaleString() %>) by <%= comment.user.username %> </small>
-		</li>
-	<% }) %>
-</ul>
+			<button>Add a comment</button>
+		</form>
+	<%}%>
+	
+	<ul>
+		<% event.comments.forEach((comment)=> { %>
+			<li>
+				<%= comment.text%>
+				
+				<small>(<%= comment.date.toLocaleString() %>) by <%= comment.user.username %> </small>
+			</li>
+		<% }) %>
+	</ul>
 
-<small><a href="/events/<%= event._id %>/edit">Edit!</a>
+	<small><a href="/events/<%= event._id %>/edit">Edit!</a>
 
-<form method="POST" action="/events/<%= event._id %>?_method=DELETE">
-	<button>Delete this event!</button>
-</form>
+	<form method="POST" action="/events/<%= event._id %>?_method=DELETE">
+		<button>Delete this event!</button>
+	</form>
 
 
 <%- include('../partials/footer.ejs') %>
