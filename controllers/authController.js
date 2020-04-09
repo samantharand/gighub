@@ -2,6 +2,21 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
 const User = require('../models/user')
+const multer = require('multer')
+
+const storage = multer.diskStorage({
+	destination: function(req, file, cb) {
+		cb(null, './uploads/user')
+	},
+	filename: function(req, file, cb) {
+		cb(null, new Date().toISOString() + file.originalname) // new Date().toISOString() + 
+	}
+})
+
+const upload = multer({
+	storage: storage
+	// dest: 'uploads/'
+})
 
 // registration page
 router.get('/register', (req, res) => {
@@ -9,7 +24,7 @@ router.get('/register', (req, res) => {
 })
 
 // complete registration
-router.post('/register', async (req, res, next) => {
+router.post('/register', upload.single('profilePhoto'), async (req, res, next) => {
 	try {
 		// desired username and password
 		const desiredUsername = req.body.username
@@ -24,13 +39,17 @@ router.post('/register', async (req, res, next) => {
 			res.redirect('/auth/register')
 		// else they dont
 		} else {
+			console.log("req file vv");
+			console.log(req.file);
+			console.log("req file ^^");
+
 			const salt = bcrypt.genSaltSync(10)
 			const hashedPassword = bcrypt.hashSync(desiredPassword, salt)
 			// store the username and password and id loggedIn
 			const createdUser = await User.create({
 				username: desiredUsername,
 				password: hashedPassword,
-				profilePhoto: req.body.profilePhoto,
+				profilePhoto: req.file.path,
 				age: req.body.age,
 				location: req.body.location
 			})

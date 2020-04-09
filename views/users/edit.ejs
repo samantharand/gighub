@@ -3,7 +3,7 @@
 	<h2>EDIT <%= user.username %></h2>
 	<p>* marks required </p>
 
-	<form method="POST" action="/users/<%= user.id %>?_method=PUT">
+	<form method="POST" enctype="multipart/form-data" action="/users/<%= user.id %>?_method=PUT">
 		<fieldset>
 			<div>
 				<label for="username">*USERNAME:</label>
@@ -16,26 +16,9 @@
 					required
 				/ >
 			</div>
-<!-- 			<div>
-				<label for="password">*PASSWORD:</label>
-				<input 
-					type="password" 
-					name="password" 
-					id="password" 
-					placeholder="password" 
-					value="<%= user.password %>" 
-					required
-				/ >
-			</div> -->
 			<div>
 				<label for="profilePhoto">PROFILE PIC:</label>
-				<input 
-					type="text" 
-					name="profilePhoto" 
-					id="profilePhoto" 
-					placeholder="profile pic" 
-					value="<%= user.profilePhoto %>" 
-				/ >
+				<input type="file" id="profilePhoto" name="profilePhoto" value="<%= user.profilePhoto %>">
 			</div>
 			<div>
 				<label for="location">LOCATION:</label>

@@ -3,7 +3,7 @@
 	<h2>SIGN UP</h2>
 	<p>* marks required</p>
 
-	<form method="POST" action="/auth/register">
+	<form method="POST" enctype="multipart/form-data" action="/auth/register">
 		<fieldset>
 			<div>
 				<label for="username">*USERNAME:</label>
@@ -27,12 +27,7 @@
 			</div>
 			<div>
 				<label for="profilePhoto">PROFILE PIC:</label>
-				<input 
-					type="text" 
-					name="profilePhoto" 
-					id="profilePhoto" 
-					placeholder="profile pic" 
-				/ >
+				<input type="file" id="profilePhoto" name="profilePhoto">
 			</div>
 			<div>
 				<label for="location">LOCATION:</label>
