@@ -1,10 +1,16 @@
 <%- include('../partials/header.ejs') %>
-<h2>BANDS</h2>
-<%= message %>
-<ul>
-<%bands.forEach((band)=>{%>
-<li><a href="bands/<%=band.id%>"><%=band.name%></a></li>
-<%})%>
+	
+	<h2>BANDS</h2>
+	<%= message %>
+
+	<ul>
+		<% bands.forEach((band)=>{%>
+			<li>
+				<a href="bands/<%=band.id%>"><%=band.name%></a>
+			</li>
+		<%})%>
+
+	</ul>
 
 
 

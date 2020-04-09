@@ -1,0 +1,13 @@
+<%- include('../partials/header.ejs') %>
+<h2> ALL PICS</h2>
+
+<ul>
+	<% photos.forEach((photo) => { %>
+		<li>
+			<a href="photos/<%= photo._id %>"><%=photo.title%></a>		
+		</li>
+	<%})%>
+</ul>
+
+
+<%- include('../partials/footer.ejs') %>

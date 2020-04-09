@@ -1,0 +1,16 @@
+<%- include('../partials/header.ejs') %>
+
+	<h2>SIGN UP</h2>
+	<p>* marks required</p>
+
+	<form method="POST" enctype="multipart/form-data" action="/photos/">
+			<div>
+				<label for="pic">PICS:</label>
+				<input multiple type="file" id="pic" name="pic">
+			</div>
+			
+			<button>UPLOAD PICS</button>
+		</fieldset>
+	</form>
+
+<%- include('../partials/footer.ejs') %>

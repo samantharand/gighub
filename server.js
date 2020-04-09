@@ -9,11 +9,13 @@ const app = express()
 
 require('./db/db')
 
+// MIDDLEWARE
 app.use(express.static('public'))
 app.use('/uploads', express.static('uploads'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
 
+// SESSION
 app.use(session({
 	secret: process.env.SESSION_SECRET,
 	resave: false,
@@ -30,16 +32,25 @@ app.use((req, res, next) => {
 	next()
 })
 
+// CONTROLLERS
 const authController = require('./controllers/authController')
 app.use('/auth', authController)
+
 const userController = require('./controllers/userController')
 app.use('/users', userController)
+
 const eventController = require('./controllers/eventController')
 app.use('/events', eventController)
+
 const bandController = require('./controllers/bandController')
 app.use('/bands', bandController)
+
 const commentController = require('./controllers/commentController')
 app.use('/comments', commentController)
+
+const photoController = require('./controllers/photoController')
+app.use('/photos', photoController)
+
 
 app.get('/', (req, res) => {
 	res.render('home.ejs')
