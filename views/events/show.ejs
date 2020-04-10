@@ -11,15 +11,19 @@
 	
 	<p> Where: <%= event.location %> </p>
 
-	<% if (event.attendees.find( ({})) { -%>
-	
-		<form method="POST" action="/users/<%= event.id %>">
-			<button>Attend</button>
-		</form>
+	<% if (event.attendees.find( ({_id}) => _id == userId ) ) { -%>
+
+		<p>ur going yay</p>
 		
 	<% } else { -%>
 		
+		<form method="POST" action="/users/<%= event.id %>">
+			<button>Attend</button>
+		</form>
+
 	<% } -%>
+
+
 
 	<p>Attendees</p>
 
