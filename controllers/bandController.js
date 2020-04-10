@@ -21,6 +21,7 @@ const upload = multer({
 //index route
 router.get('/', async (req, res, next) => {
   try {
+
   		const foundBands = await Band.find().populate('user')
   		console.log(foundBands)
   		res.render('bands/index.ejs', {bands: foundBands})
@@ -37,6 +38,7 @@ router.get('/new', requireAuth,  (req, res) => {
 //have to add auth require later
 router.post('/', upload.single("bandPhoto"), async (req, res, next) => {
   try {
+
   		const bandToCreate = {
   			name: req.body.name,
   			bandPhoto: req.file.path,
@@ -66,8 +68,13 @@ router.get('/:id', async (req, res, next) => {
 router.get("/:id/edit", async (req, res, next) => {
   try {
   	const foundBand = await Band.findById(req.params.id).populate('user')
+  	console.log('foundBand.user', foundBand.user)
+  	console.log("foundBand.user.id", foundBand.user._id)
+  	if(req.session.userId == foundBand.user._id){
   	res.render('bands/edit.ejs', {band:foundBand})
-  		
+  	}else{
+  		res.render('auth/accessDenied.ejs')
+  	}	
   	}catch(error){
   		next(error)
   	}
