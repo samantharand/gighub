@@ -1,36 +1,71 @@
-main {
-	height: 95vh;
-	overflow: scroll;
+body {
+	width: 75vw;
+	margin: auto;
+	background-color: #E2E8DD;
 }
 
 header {
 	display: flex;
 	justify-content: space-between;
-	background-color: thistle;
+	background-color: #E2E8DD;
+	color:  #4E5340;
+	position: fixed;
+}
+
+main {
+	height: 85vh;
+	overflow: scroll;
+	margin-top: 50px;
+	padding: 5px;
+	padding-top: 25px;
+	/*border-right: 3px solid #4E5340;*/
+}
+
+
+h2 {
+	color: #4E5340;
 }
 
 a {
-	padding: 5px;
+	margin: 5px;
+	font-weight: 200;
+	color: #4E5340;
 }
 
+a:hover {
+	/*font-weight: 400;*/
+	color: #697268;
+	font-style: italic;
+}
+
+/*photo index display*/
 .photoGrid {
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 }
 
+/*photo grid pictures*/
 .photoGridPics {
 	height: 250px;
+	filter: grayscale(100%);
+}
+
+.photoGridPics:hover {
+	filter: grayscale(25%);
 }
 
 .indexProfilePhoto {
 	height: 250px;
 }
 
+/*user index page - whole page div*/
 .userCardGrid {
 	display: flex;
 	justify-content: center;
 }
 
+/*individual user cards*/
 .userCard {
 	display: flex;
 	flex-direction: column;
@@ -38,11 +73,20 @@ a {
 	margin: 5px;
 }
 
+/*user card photo*/
+.indexProfilePhoto {
+	filter: grayscale(100%);
+}
+
+.indexProfilePhoto:hover {
+	filter: grayscale(25%);
+}
+
 img	{
 	padding: 5px;
 }
 
 footer {
-	background-color: thistle;
+	background-color: #E2E8DD;
 	text-align: center;
 }
