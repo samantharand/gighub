@@ -44,24 +44,25 @@ router.get('/:eventId/:commentId/edit', async (req, res, next) => {
       next(error)
     }
 })
-// router.put('/:eventId/:commentId', async (req, res, next) => {
-//   try {
-//         const foundEvent = await Event.findById(req.params.eventId)
+router.put('/:eventId/:commentId', async (req, res, next) => {
+  try {
+        const foundEvent = await Event.findById(req.params.eventId)
      
 
-//       const foundComment = foundEvent.comments.id(req.params.commentId) 
-//       console.log(`this is found comment ${foundComment}`)
-//       console.log(foundComment._id)
-//       console.log("this is req.body")
-//       console.log(req.body)
-//       foundEvent.update({ foundComment._id})
-//       await Comment.findOneAndReplace({id: foundComment._id}, {text: req.body.text})
+      const foundComment = foundEvent.comments.id(req.params.commentId) 
+      console.log(`this is found comment ${foundComment}`)
+      console.log(foundComment._id)
+      console.log("this is req.body")
+      console.log(req.body)
+      // foundEvent.update({ foundComment._id})
+      // await Comment.findById(foundComment._id) {text: req.body.text})
+      foundComment.update({text: req.body.text})
        
       
-//       res.redirect(`/events/${req.params.eventId}`)
+      res.redirect(`/events/${req.params.eventId}`)
 
-//     }catch(error){
-//       next(error)
-//     }
-//   })
+    }catch(error){
+      next(error)
+    }
+  })
 module.exports= router

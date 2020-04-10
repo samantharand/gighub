@@ -25,6 +25,10 @@ const eventSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	time: {
+		type: String,
+		required:true
+	},
 	eventPhoto: String,
 	details: String,
 	capacity: Number,

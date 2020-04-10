@@ -6,7 +6,7 @@
 
 	<h2><%= event.name %></h2>
 	
-	<p> When: <%= event.date.toLocaleString() %></p>
+	<p> When: <%= event.date.toDateString() %> @ <%= event.time.toLocaleString()%></p>
 
 	
 	<p> Where: <%= event.location %> </p>
