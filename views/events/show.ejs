@@ -1,31 +1,35 @@
 <%- include('../partials/header.ejs') %>
 
-	<div>
-		<img src="/<%= event.eventPhoto %>" height="300">
+	<div class="eventPhoto">
+		<img src="/<%= event.eventPhoto %>">
 	</div>
 
-	<h2><%= event.name %></h2>
-	
-	<p> When: <%= event.date.toLocaleString() %></p>
+	<div class="eventInfo">
+		
+		<h2><%= event.name %></h2>
+		
+		<p> When: <%= event.date.toLocaleString() %></p>
 
-	
-	<p> Where: <%= event.location %> </p>
+		
+		<p> Where: <%= event.location %> </p>
 
-	<form method="POST" action="/users/<%= event.id %>">
-		<button>Attend</button>
-	</form>
+		<form method="POST" action="/users/<%= event.id %>">
+			<button>Attend</button>
+		</form>
 
-	<p>Attendees</p>
+		<p>Attendees</p>
 
-	<ul>
-		<% for(let i = 0; i < event.attendees.length; i++) { %>
-			<li>
-				<%= event.attendees[i].username %>	
-			</li>
-		<% } %>
-	</ul>
+		<ul>
+			<% for(let i = 0; i < event.attendees.length; i++) { %>
+				<li>
+					<%= event.attendees[i].username %>	
+				</li>
+			<% } %>
+		</ul>
 
-	hosted by: <%= event.user.username %>
+		hosted by: <%= event.user.username %>
+
+	</div>
 	<% if(username) {%>
 		<form method="POST" action="/comments/<%= event.id %>">
 			<textarea name="text" placeholder="Questions? Thoughts?"></textarea>

@@ -82,6 +82,17 @@ a:hover {
 	filter: grayscale(25%);
 }
 
+/*.eventPhoto {
+	margin-top: -50px;
+	margin-left: 250px;
+}
+
+.eventInfo {
+	background-color: lightblue;
+	width: 350px;
+	height: 500px;
+}*/
+
 img	{
 	padding: 5px;
 }
