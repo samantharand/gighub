@@ -46,3 +46,51 @@ footer {
 	background-color: thistle;
 	text-align: center;
 }
+
+
+
+/*nav*/
+
+.navbar {
+	overflow: hidden;
+	background-color: red;
+}
+
+.navbar a {
+	float: left;
+	text-align: center;
+}
+
+.bandDropdown {
+	float: left;
+	overflow: hidden;
+}
+
+.bandDropdown .bandsButton {
+	background-color: lightblue;
+}
+
+.navbar a:hover, .bandDropdown:hover .bandsButton {
+	background-color: blue;
+}
+
+.bandContent {
+	display: none;
+	position: absolute;
+	background-color: white;
+}
+
+.bandContent: hover {
+	display: block;
+	position: relative;
+}
+
+
+
+
+
+
+
+
+
+
