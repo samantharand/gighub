@@ -1,11 +1,13 @@
 <%- include('../partials/header.ejs') %>
-<h2><%=band.name%></h2>
-<img class="bandPhotot" src="/<%= band.bandPhoto %>" height="300">
-	this band was formed in <%= band.formed%>
 
-	band was added by <%=band.user.username%>
+	<h2><%=band.name%></h2>
+	<img class="bandPhotot" src="/<%= band.bandPhoto %>" height="300">
+		this band was formed in <%= band.formed%>
 
-<%if(userId == band.user._id){%>
-<a href="/bands/<%=band.id%>/edit">Edit</a>
-<%}%>
+		band was added by <%=band.user.username%>
+
+	<%if(userId == band.user._id){%>
+		<a href="/bands/<%=band.id%>/edit">Edit</a>
+	<%}%>
+	
 <%- include('../partials/footer.ejs') %>

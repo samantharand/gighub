@@ -23,16 +23,27 @@
 			|
 			<a href="/events/new">NEW EVENT</a>
 		</nav>
+
 		<nav>
 			<a href="/photos">ALL PHOTOS</a>
 			|
 			<a href="/photos/new">ADD PHOTOS</a>
 		</nav>
+
 		<nav>		
-			<a href="/auth/login">LOGIN</a>
-			|
-			<a href="/auth/register">REGISTER</a>
-			|
-			<a href="/auth/logout">LOGOUT</a>
+					<!-- using username because loggedIn wasnt registering as true -->
+			<% if(!username) { -%>
+				
+				<a href="/auth/login">LOGIN</a>
+				|
+				<a href="/auth/register">REGISTER</a>
+				
+			<% } else { -%>
+
+				<a href="/auth/logout">LOGOUT</a>
+				
+			<% } -%>
+
 		</nav>
+
 	</header>
