@@ -5,9 +5,7 @@
 
 	band was added by <%=band.user.username%>
 
-
+<%if(userId == band.user._id){%>
 <a href="/bands/<%=band.id%>/edit">Edit</a>
-<form method="POST" action="/bands/<%=band.id%>?_method=DELETE">
-	<button>DELETE</button>
-</form>
+<%}%>
 <%- include('../partials/footer.ejs') %>

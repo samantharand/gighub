@@ -31,6 +31,8 @@
 	</fieldset>
 	<button>EDIT BAND!</button>
 </form>
-
+<form method="POST" action="/bands/<%=band.id%>?_method=DELETE">
+	<button>DELETE</button>
+</form>
 
 <%- include('../partials/footer.ejs') %>

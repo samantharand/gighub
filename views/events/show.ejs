@@ -49,9 +49,6 @@
 	<%if(event.user._id == userId){%>
 	<small><a href="/events/<%= event._id %>/edit">Edit!</a>
 
-	<form method="POST" action="/events/<%= event._id %>?_method=DELETE">
-		<button>Delete this event!</button>
-	</form>
 <%}%>
 
 <%- include('../partials/footer.ejs') %>

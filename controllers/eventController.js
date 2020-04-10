@@ -33,15 +33,13 @@ router.get('/', async (req, res, next) => {
 
 //create
 router.get('/new', requireAuth, async (req, res) => {
-  if (req.session.userId){
+  
     const todaysDate = moment(Date.now()).utc().format("YYYY-MM-DD")
     // const newDate = moment(foundEvent.date).utc().format("YYYY-MM-DD")
   	res.render('events/new.ejs', {
       todaysDate: todaysDate
-    })
-  }else{
-  	res.redirect('/auth/login')
-  }
+    
+  })
 		
 })
 
@@ -87,7 +85,7 @@ router.get('/:id', async (req, res, next) => {
 router.get("/:id/edit",async (req, res, next) => {
   try {
       const foundEvent = await Event.findById(req.params.id).populate('user')
-  		
+  	
   		const newDate = moment(foundEvent.date).utc().format("YYYY-MM-DD")
 
       if(req.session.userId == foundEvent.user._id){
