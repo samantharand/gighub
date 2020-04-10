@@ -3,6 +3,7 @@ const router = express.Router()
 const User = require('../models/user')
 const Band = require('../models/band')
 const requireAuth = require('../lib/requireAuth')
+const bandAuth = require('../lib/bandAuth')
 const multer = require('multer')
 const storage = multer.diskStorage({
 	destination: function(req, file, cb) {

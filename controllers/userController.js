@@ -5,7 +5,7 @@ const Event = require('../models/event')
 const Band = require('../models/band')
 const multer = require('multer')
 const requireAuth = require('../lib/requireAuth')
-
+const userAuth = require('../lib/userAuth')
 const storage = multer.diskStorage({
 	destination: function(req, file, cb) {
 		cb(null, './uploads/user')
@@ -46,10 +46,10 @@ router.get('/:id',requireAuth, async (req, res, next) => {
 })
 
 // edit
-router.get('/:id/edit', async (req, res, next) => {
+router.get('/:id/edit', userAuth, async (req, res, next) => {
 	try {
 		console.log(req.session);
-		if (req.session.userId === req.params.id) {
+		
 			const foundUser = await User.findById(req.params.id)
 			console.log("found user", foundUser);
 			console.log("body", req.body);
@@ -57,12 +57,11 @@ router.get('/:id/edit', async (req, res, next) => {
 			res.render('users/edit.ejs', {
 				user: foundUser
 			})
-		} else {
-			res.redirect('/auth/login')
+		
 		}
 
 
-	} catch (error) {
+	 catch (error) {
 		next(error)
 	}
 })
