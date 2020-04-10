@@ -1,6 +1,6 @@
 <%- include('../partials/header.ejs') %>
 <h2>NEW BAND</h2>
-<form method="POST" action="/bands">
+<form method="POST" enctype="multipart/form-data" action="/bands">
 	<fieldset>
 		<div>
 			<label for='name'>*BAND NAME:</label>
@@ -9,7 +9,7 @@
 		</div>
 		<div>
 			<label for="bandPhoto">PHOTO:</label>
-			<input type="text" name="bandPhoto" id="bandPhoto" placeholder="PHOTO OF BAND"
+			<input type="file" name="bandPhoto" id="bandPhoto" placeholder="PHOTO OF BAND"
 			/>
 		</div>
 		<div>

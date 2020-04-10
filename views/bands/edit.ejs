@@ -1,6 +1,6 @@
 <%- include('../partials/header.ejs') %>
 <h2>EDIT BAND</h2>
-<form method="POST" action="/bands/<%=band._id%>?_method=PUT">
+<form method="POST" enctype="multipart/form-data" action="/bands/<%=band._id%>?_method=PUT">
 	<fieldset>
 		<div>
 			<label for='name'>*BAND NAME:</label>
@@ -9,7 +9,7 @@
 		</div>
 		<div>
 			<label for="bandPhoto">PHOTO:</label>
-			<input type="text" name="bandPhoto" id="bandPhoto" placeholder="PHOTO OF BAND" value="<%=band.bandPhoto%>"
+			<input type="file" name="bandPhoto" id="bandPhoto" placeholder="PHOTO OF BAND" value="<%=band.bandPhoto%>"
 			/>
 		</div>
 		<div>

@@ -52,6 +52,7 @@ router.post('/', upload.single('eventPhoto'), async (req, res, next) => {
 	  			name: req.body.name,
 	  			user: req.session.userId,
 	  			date: req.body.date,
+          time: req.body.time,
 	  			location: req.body.location,
 	  			eventPhoto: req.file.path,
 	  			details: req.body.details,

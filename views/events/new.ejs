@@ -11,6 +11,7 @@
         		name="name" 
         		id="name" 
         		placeholder="Enter events name" 
+        		required
         	/>
 		</div>
     	<div>
@@ -20,6 +21,18 @@
     		 	name="date" 
     		 	id="date"
           value="<%= todaysDate %>" 
+          required
+    		 />
+    	</div>
+    	<div>
+    		 <label for="time">*TIME</label>
+    		 <input 
+    		 	type="time" 
+    		 	name="time" 
+    		 	id="time"
+    		 	placeholder="09:00 PM" 
+    		 	required
+          
     		 />
     	</div>
     	<div>
@@ -28,12 +41,14 @@
     			type="string" 
     			name="location"
     			id="location"
-    			placeholder="ENTER THE ADDRESS" 
+    			placeholder="ENTER THE ADDRESS"
+    			required
     		/>
     	</div>
       <div>
         <label for="eventPhoto">DISPLAY PIC:</label>
-        <input type="file" id="eventPhoto" name="eventPhoto">
+        <input type="file" id="eventPhoto" name="eventPhoto"
+        required>
       </div>
   		<div>
   			<label for="details">DETAILS</label>
