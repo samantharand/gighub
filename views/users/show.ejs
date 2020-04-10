@@ -22,7 +22,7 @@
 		<p>photos uploaded:</p>
 		<!-- loop here -->
 	</div>
-
+<% if (userId == user._id) {%>
 		<p>(<a href="/users/<%= user._id %>/edit">EDIT</a>)</p>
-		
+	<%}%>
 <%- include('../partials/footer.ejs') %>
