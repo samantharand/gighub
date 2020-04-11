@@ -12,6 +12,7 @@ header {
 	color:  #4E5340;
 	position: fixed;
 	width: 75vw;
+
 }
 
 main {
@@ -22,7 +23,6 @@ main {
 	padding-top: 25px;
 	/*border-right: 3px solid #4E5340;*/
 }
-
 
 h2 {
 	color: #4E5340;
@@ -38,6 +38,23 @@ a:hover {
 	/*font-weight: 400;*/
 	color: #697268;
 	font-style: italic;
+}
+
+/*photo index display*/
+.photoGrid {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+/*photo grid pictures*/
+.photoGridPics {
+	height: 250px;
+	filter: grayscale(100%);
+}
+
+.photoGridPics:hover {
+	filter: grayscale(25%);
 }
 
 /*photo index display*/
@@ -58,12 +75,14 @@ a:hover {
 }*/
 
 /*user index page - whole page div*/
+
 .cardGrid {
 	display: flex;
 	justify-content: center;
 }
 
 /*individual user cards*/
+
 .photoCard {
 	display: flex;
 	flex-direction: column;
@@ -100,7 +119,6 @@ a:hover {
 	box-shadow: 9px -5px 11px -1px rgba(36,36,36,0.26);
 }
 
-
 .edit {
 	margin-top: 50px;
 	font-size: 15px;
@@ -117,6 +135,7 @@ a:hover {
 	overflow: hidden;
 }
 /*trying to get the cool layout on event page ^^ */
+
 
 img	{
 	padding: 5px;
