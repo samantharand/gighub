@@ -1,68 +1,92 @@
 <%- include('../partials/header.ejs') %>
 
-	<div>
-		<img src="/<%= event.eventPhoto %>" height="300">
-	</div>
 
-	<h2><%= event.name %></h2>
-	
-	<p> When: <%= event.date.toDateString() %> @ <%= event.time.toLocaleString()%></p>
+	<div class="entireEvent">
 
-	
-	<p> Where: <%= event.location %> </p>
+		<div class="eventInfo">
 
-	<% if (event.attendees.find( ({_id}) => _id == userId ) ) { -%>
-
-		<p>ur going yay</p>
-
-	<% } else if (!username) { -%>
-
-		<p>you must be logged in</p>
-		
-	<% } else { -%>
-		
-		<form method="POST" action="/users/<%= event.id %>">
-			<button>Attend</button>
-		</form>
-
-	<% } -%>
-
-
-
-	<p>Attendees</p>
-
-	<ul>
-		<% for(let i = 0; i < event.attendees.length; i++) { %>
-			<li>
-				<%= event.attendees[i].username %>	
-			</li>
-		<% } %>
-	</ul>
-
-	hosted by: <%= event.user.username %>
-	<% if(username) {%>
-		<form method="POST" action="/comments/<%= event.id %>">
-			<textarea name="text" placeholder="Questions? Thoughts?"></textarea>
+			<h2><%= event.name %></h2>
 			
-			<button>Add a comment</button>
-		</form>
-	
-	<ul>
-		<% event.comments.forEach((comment)=> { %>
-			<li>
-				<%= comment.text%>
-				
-				<small>(<%= comment.date.toLocaleString() %>) by <%= comment.user.username %> </small>
-				<small><a href="/comments/<%=event.id%>/<%=comment.id%>/edit">edit</a></small>
-			</li>
-		<% }) %>
-	</ul>
-	<%}else{%>
-	<p>you must be logged into access comments</p>
-	<%}%>
-	<%if(event.user._id == userId){%>
-	<small><a href="/events/<%= event._id %>/edit">Edit!</a>
+			<p> When: <%= event.date.toDateString() %> @ <%= event.time.toLocaleString()%></p>
 
-<%}%>
+			
+			<p> Where: <%= event.location %> </p>
+
+			<% if (event.attendees.find( ({_id}) => _id == userId  )) { -%>
+
+				<p>ur going yay</p>
+
+			<% } else if (!username) { -%>
+
+				<p>you must be logged in</p>
+				
+			<% } else { -%>
+				
+				<form method="POST" action="/users/<%= event.id %>">
+					<button>Attend</button>
+				</form>
+
+			<% } -%>
+
+
+
+			<p>Attendees</p>
+
+			<ul>
+				<% for(let i = 0; i < event.attendees.length; i++) { %>
+						<li>
+							<%= event.attendees[i].username %>	
+						</li>
+				<% } %>
+			</ul>
+
+			hosted by: <%= event.user.username %>
+			<% if(username) { %>
+
+				<form method="POST" action="/comments/<%= event.id %>">
+					<textarea name="text" placeholder="Questions? Thoughts?"></textarea>
+					
+					<button>Add a comment</button>
+
+				</form>
+			
+				<ul>
+
+				<% event.comments.forEach((comment)=> { %>
+
+					<li>
+						<%= comment.text%>
+						
+						<small>(<%= comment.date.toLocaleString() %>) by <%= comment.user.username %> </small>
+						<small><a href="/comments/<%=event.id%>/<%=comment.id%>/edit">edit</a></small>
+					</li>
+
+				<% }) %>
+
+			<% } else { %>
+
+					<p>you must be logged into access comments</p>
+				
+			<%}%>
+
+			</ul>
+			
+		</div> <!-- event info -->
+
+		<div class="eventPhoto">
+			<img src="/<%= event.eventPhoto %>" height="550px">
+		</div>
+
+		<div class="edit">
+			
+			<% if(event.user._id == userId) { %>
+				
+				<a href="/events/<%= event._id %>/edit">Edit!</a>
+
+			<% } %>
+		
+		</div>
+	
+	</div> <!-- entire event -->
 
 <%- include('../partials/footer.ejs') %>

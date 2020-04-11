@@ -2,6 +2,7 @@ body {
 	width: 75vw;
 	margin: auto;
 	background-color: #E2E8DD;
+	color: #4E5340;
 }
 
 header {
@@ -10,6 +11,8 @@ header {
 	background-color: #E2E8DD;
 	color:  #4E5340;
 	position: fixed;
+	width: 75vw;
+
 }
 
 main {
@@ -20,7 +23,6 @@ main {
 	padding-top: 25px;
 	/*border-right: 3px solid #4E5340;*/
 }
-
 
 h2 {
 	color: #4E5340;
@@ -55,43 +57,85 @@ a:hover {
 	filter: grayscale(25%);
 }
 
-.indexProfilePhoto {
+/*photo index display*/
+/*.photoGrid {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}*/
+
+/*photo grid pictures*/
+/*.photoGridPics {
 	height: 250px;
+	filter: grayscale(100%);
 }
+*/
+/*.photoGridPics:hover {
+	filter: grayscale(25%);
+}*/
 
 /*user index page - whole page div*/
-.userCardGrid {
+
+.cardGrid {
 	display: flex;
 	justify-content: center;
 }
 
 /*individual user cards*/
-.userCard {
+
+.photoCard {
 	display: flex;
 	flex-direction: column;
 	border: 1px solid black;
 	margin: 5px;
+	overflow: scroll;
 }
 
 /*user card photo*/
-.indexProfilePhoto {
+.indexPhoto {
 	filter: grayscale(100%);
+	height: 200px;
 }
 
-.indexProfilePhoto:hover {
+.indexPhoto:hover {
 	filter: grayscale(25%);
 }
 
-/*.eventPhoto {
-	margin-top: -50px;
-	margin-left: 250px;
+/*trying to get the cool layout on event page vv */
+.entireEvent {
+	margin-left: 200px;
+	margin-top: 150px;
 }
 
 .eventInfo {
-	background-color: lightblue;
+	/*background-image: url("./pinktest.png")*/
+	background: url("./pinktest.png") darksalmon;
+	opacity: 95%;
 	width: 350px;
-	height: 500px;
-}*/
+	height: 450px;
+	padding: 10px;
+	margin-top: 50px;
+	position: absolute;
+	box-shadow: 9px -5px 11px -1px rgba(36,36,36,0.26);
+}
+
+.edit {
+	margin-top: 50px;
+	font-size: 15px;
+}
+
+.eventPhoto {
+	margin-top: -50px;
+	margin-left: 250px;
+	height: 450px;
+	width: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+/*trying to get the cool layout on event page ^^ */
+
 
 img	{
 	padding: 5px;
