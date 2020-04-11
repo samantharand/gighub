@@ -65,7 +65,9 @@ router.put('/:eventId/:commentId', async (req, res, next) => {
       const indexToSplice = foundEvent.comments.findIndex(comment => comment._id == req.params.commentId)
       console.log('this is index to splice')
       console.log(indexToSplice)
-
+      foundEvent.comments.splice(indexToSplice, 1, newFoundComment)
+      await foundEvent.save()
+      
       console.log(foundEvent.comments[indexToSplice])
 
       console.log("this is found comment after update")
