@@ -1,12 +1,13 @@
 <%- include('../partials/header.ejs') %>
 
 	<h2>USER</h2>
+	<%= message %>
 
 	<div class="cardGrid">
 
 		<% users.forEach(user => { %>
 
-			<div class="card">	
+			<div class="photoCard">	
 				<a href="/users/<%= user._id %>"><img class="indexPhoto" src="<%= user.profilePhoto %>"></a>
 				<a href="/users/<%= user._id %>"><%= user.username %></a>
 			</div>
