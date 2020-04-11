@@ -10,18 +10,16 @@
 			<p> When: <%= event.date.toDateString() %> @ <%= event.time.toLocaleString()%></p>
 
 			
-			<p> Where: <%= event.location %> </p>
 
 			<% if (event.attendees.find( ({_id}) => _id == userId  )) { -%>
 
+				<p> Where: <%= event.location %> </p>
 				<p>ur going yay</p>
-
-			<% } else if (!loggedIn) { -%>
-
-				<p>you must be logged in</p>
 				
 			<% } else { -%>
 				
+				<p>Where: <i>you must be attending to see the location</i></p>
+
 				<form method="POST" action="/users/<%= event.id %>">
 					<button>Attend</button>
 				</form>
