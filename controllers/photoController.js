@@ -62,8 +62,9 @@ router.post('/', upload.array('pic', 5), async (req, res, next) => {
 router.get('/:id',  async (req, res, next) => {
   try {
   		const foundPhoto = await Photo.findById(req.params.id)
-  		if(req.session.userId == foundPhoto.user._id)
+  		if(req.session.userId == foundPhoto.user._id){
   		res.render('photos/edit.ejs', {photo: foundPhoto})
+  	}else{res.render('auth/accessDenied.ejs')}
   	}catch(error){
   		next(error)
   	}
