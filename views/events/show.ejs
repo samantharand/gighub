@@ -57,7 +57,9 @@
 					<li>
 						<%= comment.text%>
 						
-						(<%= comment.date.toLocaleString() %>) by <%= comment.user.username %>
+						(<%= comment.date.toLocaleString([], {hour: '2-digit', minute: '2-digit'}) %>) by
+						<a href="/users/<%= comment.user._id %>"><%= comment.user.username %></a>
+
 						<% if (userId == comment.user.id) { -%>
 							
 							<a href="/comments/<%=event.id%>/<%=comment.id%>/edit">edit</a>
