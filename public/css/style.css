@@ -2,6 +2,7 @@ body {
 	width: 75vw;
 	margin: auto;
 	background-color: #E2E8DD;
+	color: #4E5340;
 }
 
 header {
@@ -81,16 +82,30 @@ a:hover {
 	filter: grayscale(25%);
 }
 
-/*.eventPhoto {
-	margin-top: -50px;
-	margin-left: 250px;
+/*trying to get the cool layout on event page vv */
+.entireEvent {
+	margin-top: 150px;
 }
 
 .eventInfo {
-	background-color: lightblue;
+	/*background-image: url("./pinktest.png")*/
+	background: url("./pinktest.png") darksalmon;
 	width: 350px;
 	height: 500px;
-}*/
+	padding: 10px;
+	margin-top: 50px;
+	position: absolute;
+	box-shadow: 9px -5px 11px -1px rgba(36,36,36,0.26);
+}
+
+.eventPhoto {
+	margin-top: -50px;
+	margin-left: 250px;
+	height: 300px;
+	display: block;
+}
+
+/*trying to get the cool layout on event page ^^ */
 
 img	{
 	padding: 5px;
