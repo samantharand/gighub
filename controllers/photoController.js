@@ -59,5 +59,24 @@ router.post('/', upload.array('pic', 5), async (req, res, next) => {
 		next(error)
 	}
 })
+router.get('/:id',  async (req, res, next) => {
+  try {
+  		const foundPhoto = await Photo.findById(req.params.id)
+  		if(req.session.userId == foundPhoto.user._id){
+  		res.render('photos/edit.ejs', {photo: foundPhoto})
+  	}else{res.render('auth/accessDenied.ejs')}
+  	}catch(error){
+  		next(error)
+  	}
+ })
+router.delete('/:id', async (req, res, next) => {
+  try {	
+  		const foundPhoto = await Photo.findById(req.params.id).populate('user')
+  		const deletedPic = await Photo.findByIdAndRemove(req.params.id)
+  		res.redirect(`/users/${foundPhoto.user._id}`)
+  	}catch(error){
+  		next(error)
+  	}
+})
 
 module.exports = router

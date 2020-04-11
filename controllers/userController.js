@@ -3,6 +3,7 @@ const router = express.Router()
 const User = require('../models/user')
 const Event = require('../models/event')
 const Band = require('../models/band')
+const Photo = require('../models/photo')
 const multer = require('multer')
 const requireAuth = require('../lib/requireAuth')
 const userAuth = require('../lib/userAuth')
@@ -35,15 +36,24 @@ router.get('/', async (req, res, next) => {
 // show
 router.get('/:id',requireAuth, async (req, res, next) => {
 	try {
+		const allEvents = await Event.find()
+		const foundAttending = await Event.find({'attendees._id': req.params.id})
+		console.log('found attending - ', foundAttending)
+	
+		// console.log("this is attedning users", userAttending) 
+		const userPhotos = await Photo.find({user: req.params.id})
 		const foundUser = await User.findById(req.params.id)
-
+console.log('this is users photos - \n', userPhotos)
 		res.render('users/show.ejs', {
-			user: foundUser
+			user: foundUser,
+			photos: userPhotos,
+			events: foundAttending
 		})
 	} catch (error) {
 		next(error)
 	}
 })
+
 
 // edit
 router.get('/:id/edit', userAuth, async (req, res, next) => {
@@ -86,6 +96,7 @@ router.delete('/:id', async (req, res, next) => {
   try {
   		if(req.session.userId == req.params.id){
   			// console.log(user)
+  			await Photo.remove({user: req.params.id})
   			await Band.remove({user: req.params.id})
   			await Event.remove({user:req.params.id})
   			await User.findByIdAndRemove(req.params.id)

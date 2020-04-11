@@ -1,0 +1,7 @@
+ <%- include('../partials/header.ejs') %>
+
+ <form method="POST" action="/photos/<%= photo._id %>?_method=DELETE">
+    <button>Delete this pic!</button>
+  </form>
+
+  <%- include('../partials/footer.ejs') %>

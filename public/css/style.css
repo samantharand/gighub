@@ -101,7 +101,7 @@ a:hover {
 
 
 .edit {
-	margin-top: 200px;
+	margin-top: 50px;
 	font-size: 15px;
 }
 
@@ -110,7 +110,9 @@ a:hover {
 	margin-left: 250px;
 	height: 450px;
 	width: 300px;
-	display: block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	overflow: hidden;
 }
 /*trying to get the cool layout on event page ^^ */
