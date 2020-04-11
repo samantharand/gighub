@@ -16,7 +16,7 @@
 
 				<p>ur going yay</p>
 
-			<% } else if (!username) { -%>
+			<% } else if (!loggedIn) { -%>
 
 				<p>you must be logged in</p>
 				
@@ -57,8 +57,12 @@
 					<li>
 						<%= comment.text%>
 						
-						<small>(<%= comment.date.toLocaleString() %>) by <%= comment.user.username %> </small>
-						<small><a href="/comments/<%=event.id%>/<%=comment.id%>/edit">edit</a></small>
+						(<%= comment.date.toLocaleString() %>) by <%= comment.user.username %>
+						<% if (userId == comment.user.id) { -%>
+							
+							<a href="/comments/<%=event.id%>/<%=comment.id%>/edit">edit</a>
+							
+						<% } -%>
 					</li>
 
 				<% }) %>
