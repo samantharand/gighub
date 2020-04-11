@@ -15,7 +15,10 @@
 
 	<div>
 		<p>events attended:</p>
-		<!-- loop here -->
+		<ul>
+		<%events.forEach((event)=> {%>
+			<li><a href="/events/<%=event._id%>"><%=event.name%></a></li>
+		<%})%>		<!-- loop here -->
 	</div>
 
 	<div>

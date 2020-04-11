@@ -36,13 +36,18 @@ router.get('/', async (req, res, next) => {
 // show
 router.get('/:id',requireAuth, async (req, res, next) => {
 	try {
-		// const userAttending
+		const allEvents = await Event.find()
+		const foundAttending = await Event.find({'attendees._id': req.params.id})
+		console.log('found attending - ', foundAttending)
+	
+		// console.log("this is attedning users", userAttending) 
 		const userPhotos = await Photo.find({user: req.params.id})
 		const foundUser = await User.findById(req.params.id)
 console.log('this is users photos - \n', userPhotos)
 		res.render('users/show.ejs', {
 			user: foundUser,
-			photos: userPhotos
+			photos: userPhotos,
+			events: foundAttending
 		})
 	} catch (error) {
 		next(error)
