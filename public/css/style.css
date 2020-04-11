@@ -5,6 +5,10 @@ body {
 	color: #4E5340;
 }
 
+.errorMessage {
+	color: maroon;
+}
+
 header {
 	display: flex;
 	justify-content: space-between;

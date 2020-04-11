@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 	res.locals.username = req.session.username
 	res.locals.userId = req.session.userId
 	res.locals.message = req.session.message
-	req.session.message = null
+	req.session.message = undefined
 
 	next()
 })
