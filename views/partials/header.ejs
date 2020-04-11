@@ -8,30 +8,6 @@
 <body>
 
 	<header>
-		<!-- <nav>
-			<ul>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Dropdown
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="/">HOME</a>
-						<a class="dropdown-item" href="/bands">BANDS</a>
-					</div>	
-				</li>
-			</ul>
-		</nav> -->
-<!-- 			<div class="bandDropdown">
-				<button class="bandsButton">BANDS
-					<i class="caretDown"></i>
-				</button>
-				<div class="bandContent">
-					<a href="/bands/new">NEW</a>
-					<a href="/bands/">ALL BANDS</a>
-				</div>
-			</div>
-		</div>
- -->
 
 		<nav>
 			<a href="/">HOME</a>
@@ -40,34 +16,40 @@
 			|
 			<a href="/bands">BANDS</a>
 			|
-			<a href="/bands/new">NEW BAND</a>
-			|
 			<a href="/events">EVENTS</a>
 			|
-			<a href="/events/new">NEW EVENT</a>
+			<a href="/photos">PHOTOS</a>
 		</nav>
 
-		<nav>
-			<a href="/photos">ALL PHOTOS</a>
+		
+
+		<% if(!loggedIn) { -%>
+			
+			<nav>
+
+			<a href="/auth/login">LOGIN</a>
 			|
-			<a href="/photos/new">ADD PHOTOS</a>
-		</nav>
+			<a href="/auth/register">REGISTER</a>
+			
+			</nav>
 
-		<nav>		
-					<!-- using username because loggedIn wasnt registering as true -->
-			<% if(!username) { -%>
-				
-				<a href="/auth/login">LOGIN</a>
+		<% } else { -%>
+
+			<nav>
+				<a href="/bands/new">NEW BAND</a>
 				|
-				<a href="/auth/register">REGISTER</a>
-				
-			<% } else { -%>
+				<a href="/events/new">NEW EVENT</a>
+				|
+				<a href="/photos/new">ADD PHOTOS</a>
+			</nav>
 
+			<nav>
+				<a href="/users/<%= userId %>">VIEW YOUR ACCOUNT</a>
+				|
 				<a href="/auth/logout">LOGOUT</a>
-				
-			<% } -%>
-
-		</nav>
+			</nav>
+			
+		<% } -%>
 
 	</header>
 <main>
