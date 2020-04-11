@@ -47,9 +47,10 @@ router.get('/:eventId/:commentId/edit', async (req, res, next) => {
       next(error)
     }
 })
+
 router.put('/:eventId/:commentId', async (req, res, next) => {
   try {
-        const foundEvent = await Event.find({'comments._id': req.params.commentId})
+        const foundEvent = await Event.findOne({'comments._id': req.params.commentId})
         const foundComment = await Comment.findById(req.params.commentId) 
         console.log('this is the found event"')
       console.log(foundEvent)
@@ -57,9 +58,18 @@ router.put('/:eventId/:commentId', async (req, res, next) => {
       // await Comment.findById(foundComment._id) {text: req.body.text})
       await foundComment.updateOne({text: req.body.text})
       await foundComment.save()
+      const newFoundComment = await Comment.findById(req.params.commentId)
+      console.log("this is found event nd foundevent.comment")
+      console.log(foundEvent.comments)
+      // console.log(foundEvent.comments[1])
+      const indexToSplice = foundEvent.comments.findIndex(comment => comment._id == req.params.commentId)
+      console.log('this is index to splice')
+      console.log(indexToSplice)
+
+      console.log(foundEvent.comments[indexToSplice])
 
       console.log("this is found comment after update")
-      console.log(foundComment)
+      console.log(newFoundComment)
        
       
       res.redirect(`/events/${req.params.eventId}`)
