@@ -36,6 +36,7 @@ router.get('/', async (req, res, next) => {
 // show
 router.get('/:id',requireAuth, async (req, res, next) => {
 	try {
+		// const userAttending
 		const userPhotos = await Photo.find({user: req.params.id})
 		const foundUser = await User.findById(req.params.id)
 console.log('this is users photos - \n', userPhotos)
@@ -48,6 +49,7 @@ console.log('this is users photos - \n', userPhotos)
 	}
 })
 
+router.get(/:id/:)
 // edit
 router.get('/:id/edit', userAuth, async (req, res, next) => {
 	try {

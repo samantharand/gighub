@@ -22,7 +22,7 @@
 		<p>photos uploaded:</p>
 		<div class="photoGrid">
 		<% photos.forEach((photo) => { %>
-			<img class="photoGridPics" src="/<%= photo.pic %>" height="300">
+			<a href="/photos/<%=photo.id%>"><img class="photoGridPics" src="/<%= photo.pic %>" height="300"></a>
 		<%})%>
 	</div>
 	</div>
