@@ -1,12 +1,17 @@
 body {
 	width: 75vw;
-	margin: auto;
+	margin: 0 auto;
 	background-color: #E2E8DD;
 	color: #4E5340;
 }
 
 .errorMessage {
 	color: maroon;
+}
+
+.goodMessage {
+	position: relative;
+	margin-bottom: -25px;
 }
 
 header {
@@ -16,16 +21,15 @@ header {
 	color:  #4E5340;
 	position: fixed;
 	width: 75vw;
-
 }
 
 main {
+	margin: 0 auto;
 	height: 85vh;
 	overflow: scroll;
 	margin-top: 50px;
 	padding: 5px;
 	padding-top: 25px;
-	/*border-right: 3px solid #4E5340;*/
 }
 
 h2 {
@@ -39,7 +43,7 @@ a {
 }
 
 a:hover {
-	/*font-weight: 400;*/
+
 	color: #697268;
 	font-style: italic;
 }
@@ -106,13 +110,12 @@ a:hover {
 }
 
 /*trying to get the cool layout on event page vv */
-.entireEvent {
+.entireEvent, .homePage {
 	margin-left: 200px;
 	margin-top: 150px;
 }
 
-.eventInfo {
-	/*background-image: url("./pinktest.png")*/
+.eventInfo, .siteInfo {
 	background: url("./purpleGrain.png") thistle;
 	opacity: 95%;
 	width: 350px;
@@ -128,7 +131,7 @@ a:hover {
 	font-size: 15px;
 }
 
-.eventPhoto {
+.eventPhoto, .homePhoto {
 	margin-top: -50px;
 	margin-left: 250px;
 	height: 450px;
@@ -139,8 +142,6 @@ a:hover {
 	overflow: hidden;
 }
 /*trying to get the cool layout on event page ^^ */
-
-
 img	{
 	padding: 5px;
 }
