@@ -35,12 +35,13 @@
 			<ul>
 				<% for(let i = 0; i < event.attendees.length; i++) { %>
 						<li>
-							<%= event.attendees[i].username %>	
+							<a href="/users/<%= event.attendees[i]._id %>"><%= event.attendees[i].username %></a>	
 						</li>
 				<% } %>
 			</ul>
 
 			hosted by: <%= event.user.username %>
+
 			<% if(username) { %>
 
 				<form method="POST" action="/comments/<%= event.id %>">
