@@ -40,46 +40,44 @@ a:hover {
 }
 
 /*photo index display*/
-.photoGrid {
+/*.photoGrid {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-}
+}*/
 
 /*photo grid pictures*/
-.photoGridPics {
+/*.photoGridPics {
 	height: 250px;
 	filter: grayscale(100%);
 }
-
-.photoGridPics:hover {
+*/
+/*.photoGridPics:hover {
 	filter: grayscale(25%);
-}
-
-.indexProfilePhoto {
-	height: 250px;
-}
+}*/
 
 /*user index page - whole page div*/
-.userCardGrid {
+.cardGrid {
 	display: flex;
 	justify-content: center;
 }
 
 /*individual user cards*/
-.userCard {
+.card {
 	display: flex;
 	flex-direction: column;
 	border: 1px solid black;
 	margin: 5px;
+	overflow: scroll;
 }
 
 /*user card photo*/
-.indexProfilePhoto {
+.indexPhoto {
 	filter: grayscale(100%);
+	height: 200px;
 }
 
-.indexProfilePhoto:hover {
+.indexPhoto:hover {
 	filter: grayscale(25%);
 }
 
