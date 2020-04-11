@@ -49,7 +49,7 @@ console.log('this is users photos - \n', userPhotos)
 	}
 })
 
-router.get(/:id/:)
+
 // edit
 router.get('/:id/edit', userAuth, async (req, res, next) => {
 	try {
@@ -91,6 +91,7 @@ router.delete('/:id', async (req, res, next) => {
   try {
   		if(req.session.userId == req.params.id){
   			// console.log(user)
+  			await Photo.remove({user: req.params.id})
   			await Band.remove({user: req.params.id})
   			await Event.remove({user:req.params.id})
   			await User.findByIdAndRemove(req.params.id)
