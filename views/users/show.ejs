@@ -15,12 +15,23 @@
 
 	<div>
 		<p>events attended:</p>
-		<!-- loop here -->
+		<ul>
+		<%events.forEach((event)=> {%>
+			<li><a href="/events/<%=event._id%>"><%=event.name%></a></li>
+		<%})%>		<!-- loop here -->
 	</div>
 
 	<div>
 		<p>photos uploaded:</p>
-		<!-- loop here -->
+		<div class="photoGrid">
+		<% photos.forEach((photo) => { %>
+		<% if (userId == user._id) {%>
+			<a href="/photos/<%=photo.id%>"><img class="photoGridPics" src="/<%= photo.pic %>" height="300"></a>
+		<%}else{%>
+			<img class="photoGridPics" src="/<%= photo.pic %>" height="300">
+		<%}%>
+		<%})%>
+	</div>
 	</div>
 <% if (userId == user._id) {%>
 		<p>(<a href="/users/<%= user._id %>/edit">EDIT</a>)</p>
