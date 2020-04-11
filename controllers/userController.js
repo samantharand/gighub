@@ -3,6 +3,7 @@ const router = express.Router()
 const User = require('../models/user')
 const Event = require('../models/event')
 const Band = require('../models/band')
+const Photo = require('../models/photo')
 const multer = require('multer')
 const requireAuth = require('../lib/requireAuth')
 const userAuth = require('../lib/userAuth')
@@ -35,10 +36,12 @@ router.get('/', async (req, res, next) => {
 // show
 router.get('/:id',requireAuth, async (req, res, next) => {
 	try {
+		const userPhotos = await Photo.find({user: req.params.id})
 		const foundUser = await User.findById(req.params.id)
-
+console.log('this is users photos - \n', userPhotos)
 		res.render('users/show.ejs', {
-			user: foundUser
+			user: foundUser,
+			photos: userPhotos
 		})
 	} catch (error) {
 		next(error)

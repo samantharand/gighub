@@ -20,7 +20,11 @@
 
 	<div>
 		<p>photos uploaded:</p>
-		<!-- loop here -->
+		<div class="photoGrid">
+		<% photos.forEach((photo) => { %>
+			<img class="photoGridPics" src="/<%= photo.pic %>" height="300">
+		<%})%>
+	</div>
 	</div>
 <% if (userId == user._id) {%>
 		<p>(<a href="/users/<%= user._id %>/edit">EDIT</a>)</p>
