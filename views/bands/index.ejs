@@ -3,16 +3,19 @@
 	<h2>BANDS</h2>
 	<%= message %>
 
-	<ul>
-		<% bands.forEach((band)=>{%>
-			<li>
-				<a href="bands/<%=band.id%>"><%=band.name%></a>
-			</li>
-		<%})%>
 
-	</ul>
+	<div class="cardGrid">
 
+		<% bands.forEach(band => { %>
 
+			<div class="card">	
+				<a href="/bands/<%=band.id%>"><img class="indexPhoto" src="<%= band.bandPhoto %>"></a>
+				<a href="/bands/<%=band.id%>"><%=band.name%></a>
+			</div>
+		
+		<% }) %>
+	
+	</div>
 
 
 <%- include('../partials/footer.ejs') %>
