@@ -1,51 +1,63 @@
 <%- include('../partials/header.ejs') %>
 
-	<h2>EDIT <%= user.username %></h2>
-	<p>* marks required </p>
+<div class="eachPage">
 
-	<form method="POST" enctype="multipart/form-data" action="/users/<%= user.id %>?_method=PUT">
-		<fieldset>
-			<div>
-				<label for="username">*USERNAME:</label>
-				<input 
-					type="text" 
-					name="username" 
-					id="username" 
-					placeholder="username" 
-					value="<%= user.username %>" 
-					required
-				/ >
-			</div>
-			<div>
-				<label for="profilePhoto">PROFILE PIC:</label>
-				<input type="file" id="profilePhoto" name="profilePhoto" value="<%= user.profilePhoto %>">
-			</div>
-			<div>
-				<label for="location">LOCATION:</label>
-				<input 
-					type="text" 
-					name="location" 
-					id="location" 
-					placeholder="zip code" 
-					value="<%= user.location %>" 
-				/ >
-			</div>
-			<div>
-				<label for="age">AGE:</label>
-				<input 
-					type="number" 
-					name="age" 
-					id="age" 
-					placeholder="age" 
-					value="<%= user.age %>" 
-				/ >
-			</div>
-			<button>SUBMIT EDITS</button>
-		</fieldset>
-	</form>
-<a href="/users/<%=user.id%>/newPassword">change your password</a>
-<form method="POST" action="/users/<%= user._id %>/?_method=DELETE">
-			<button>Delete user!</button>
+	<div class="pageName">
+	
+		<h3>edit profile</h3>
+		
+	</div>
+
+	<div class="editPages">
+		<form method="POST" enctype="multipart/form-data" action="/users/<%= user.id %>?_method=PUT">
+			<fieldset>
+				<div>
+					<label for="username">*USERNAME:</label>
+					<input 
+						type="text" 
+						name="username" 
+						id="username" 
+						placeholder="username" 
+						value="<%= user.username %>" 
+						required
+					/ >
+				</div>
+				<div>
+					<label for="profilePhoto">PROFILE PIC:</label>
+					<input type="file" id="profilePhoto" name="profilePhoto" value="<%= user.profilePhoto %>">
+				</div>
+				<div>
+					<label for="location">LOCATION:</label>
+					<input 
+						type="text" 
+						name="location" 
+						id="location" 
+						placeholder="zip code" 
+						value="<%= user.location %>" 
+					/ >
+				</div>
+				<div>
+					<label for="age">AGE:</label>
+					<input 
+						type="number" 
+						name="age" 
+						id="age" 
+						placeholder="age" 
+						value="<%= user.age %>" 
+					/ >
+				</div>
+				<button>SUBMIT EDITS</button>
+			</fieldset>
+		</form>
+
+		<a href="/users/<%=user.id%>/newPassword">change your password</a>
+
+		<form method="POST" action="/users/<%= user._id %>/?_method=DELETE">
+					<button>DELETE ACCOUNT</button>
+	</div>
+	<div class="required">
+		<p>*marks required</p>
+	</div>
 
 
 <%- include('../partials/footer.ejs') %>
