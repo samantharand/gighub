@@ -1,35 +1,50 @@
 <%- include('../partials/header.ejs') %>
-<h2>NEW BAND</h2>
-<form method="POST" enctype="multipart/form-data" action="/bands">
-	<fieldset>
-		<div>
-			<label for='name'>*BAND NAME:</label>
-			<input type="name" name="name" id="name" placeholder="band name" required 
-			/>
-		</div>
-		<div>
-			<label for="bandPhoto">*PHOTO:</label>
-			<input type="file" name="bandPhoto" id="bandPhoto" placeholder="PHOTO OF BAND" required 
-			/>
-		</div>
-		<div>
-			<label for="formed">FORMED:</label>
-			<input type="number" name="formed" id="formed" placeholder="year"
-			/>
-		</div>
-		<div>
-			<label for="genre">GENRE:</label>
-			<input type="text" name="genre" id="genre" placeholder="genre"
-			/>
-		</div>
-		<div>
-			<label for='song'>A SONG:</label>
-			<input type="text" name="song" id="song" placeholder="song"
-			/>
-		</div>
-	</fieldset>
-	<button>ADD BAND!</button>
-</form>
 
+<div class="eachPage">
+
+	<div class="pageName">
+	
+		<h3>new band</h3>
+		
+	</div>
+
+	<div class="newPages">
+		
+		<form method="POST" enctype="multipart/form-data" action="/bands">
+			<fieldset>
+				<div>
+					<label for='name'>*BAND NAME:</label>
+					<input type="name" name="name" id="name" placeholder="band name" required 
+					/>
+				</div>
+				<div>
+					<label for="bandPhoto">*PHOTO:</label>
+					<input type="file" name="bandPhoto" id="bandPhoto" placeholder="PHOTO OF BAND" required 
+					/>
+				</div>
+				<div>
+					<label for="formed">FORMED:</label>
+					<input type="number" name="formed" id="formed" placeholder="year"
+					/>
+				</div>
+				<div>
+					<label for="genre">GENRE:</label>
+					<input type="text" name="genre" id="genre" placeholder="genre"
+					/>
+				</div>
+				<div>
+					<label for='song'>A SONG:</label>
+					<input type="text" name="song" id="song" placeholder="song"
+					/>
+				</div>
+			</fieldset>
+			<button>ADD BAND!</button>
+		</form>
+
+	</div>
+
+	<div class="required">
+		<p>*marks required</p>
+	</div>
 
 <%- include('../partials/footer.ejs') %>
