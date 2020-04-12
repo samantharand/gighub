@@ -1,8 +1,16 @@
 body {
-	width: 75vw;
 	margin: 0 auto;
 	background-color: #E2E8DD;
 	color: #4E5340;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/*justify-content: center;*/
+}
+
+.entireSite {
+	width: 75vw;
+	height: 75vh;
 }
 
 .pageName {
@@ -10,14 +18,12 @@ body {
 	position: absolute;
 	display: flex;
 	align-items: center;
+	letter-spacing: 2em;
 }
 
-h3 {
-	font-weight: 200;
-	writing-mode: vertical-rl;
-	text-orientation: upright;
-	margin-left: 0;
-	font-size: 20px;
+.authPages {
+	display: flex;
+	flex-direction: column;
 }
 
 .errorMessage {
@@ -51,10 +57,16 @@ main {
 	margin-top: 50px;
 	padding: 5px;
 	padding-top: 25px;
+	display: flex;
+	justify-content: center;
 }
 
-h2 {
-	color: #4E5340;
+h3 {
+	font-weight: 200;
+	writing-mode: vertical-rl;
+	text-orientation: upright;
+	margin-left: 0;
+	font-size: 20px;
 }
 
 a {
@@ -172,8 +184,8 @@ button {
 
 /*trying to get the cool layout on event page vv */
 .entireEvent, .homePage {
-	margin-left: 200px;
-	margin-top: 100px;
+/*	margin-left: 200px;
+	margin-top: 100px;*/
 }
 
 .eventInfo, .siteInfo {
