@@ -1,16 +1,46 @@
 body {
-	margin: 0 auto;
+	margin-top: 75px;
 	background-color: #E2E8DD;
 	color: #4E5340;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	overflow: scroll;
 	/*justify-content: center;*/
 }
 
 .entireSite {
 	width: 75vw;
 	height: 75vh;
+
+}
+
+.eachPage {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+		overflow: scroll;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	background-color: #E2E8DD;
+	color:  #4E5340;
+	position: fixed;
+	width: 75vw;
+}
+
+main {
+	margin: 0 auto;
+	height: 85vh;
+	overflow: scroll;
+	margin-top: 50px;
+	padding: 5px;
+	padding-top: 25px;
+	display: flex;
+	justify-content: center;
 }
 
 .pageName {
@@ -39,26 +69,6 @@ body {
 
 .contact {
 	font-weight: 300;
-}
-
-header {
-	display: flex;
-	justify-content: space-between;
-	background-color: #E2E8DD;
-	color:  #4E5340;
-	position: fixed;
-	width: 75vw;
-}
-
-main {
-	margin: 0 auto;
-	height: 85vh;
-	overflow: scroll;
-	margin-top: 50px;
-	padding: 5px;
-	padding-top: 25px;
-	display: flex;
-	justify-content: center;
 }
 
 h3 {
@@ -257,8 +267,11 @@ img	{
 }
 
 footer {
+	width: 75vw;
+	height: 200px;
 	background-color: #E2E8DD;
 	text-align: center;
+	position: sticky;
 }
 
 
