@@ -15,20 +15,38 @@
 			<p><i><%= user.username.toUpperCase() %></i></p>
 
 			<div class="userInformationShowPage">
-				<p>age: <%= user.age %></p>
+				<% if (user.age) { -%>
+					
+					<p>age: <%= user.age %></p>
+					
+				<% } -%>
 
-				<p>location: <%= user.location %></p>
+				<% if (user.location) { -%>
+					
+					<p>location: <%= user.location %></p>
+					
+				<% } -%>
+
 			</div>
 
 			<div class="userEvents">
-				<p>events attended:</p>
-				<ul>
-					<% events.forEach((event)=> { %>
-						<li>
-							<a href="/events/<%=event._id%>"><%=event.name%></a>
-						</li>
-					<% }) %>
-				</ul>		
+
+				<p>events RSVP'd for:</p>
+
+				<% if (events.length > 0) { -%>
+					<ul>
+						<% events.forEach((event)=> { %>
+							<li>
+								<a href="/events/<%=event._id%>"><%=event.name%></a>
+							</li>
+						<% }) %>
+					</ul>		
+					
+				<% } else { -%>
+						
+					<p class="noEvents">none yet :(</p>
+
+				<% } -%>
 			</div>
 
 			<div class="adminControls">
@@ -46,7 +64,8 @@
 
 
 	<div class="userPhotosShowPage">
-		<p>photos uploaded:</p>
+
+		<h2>photos uploaded:</h2>
 
 		<div class="userPhotoGrid">
 
