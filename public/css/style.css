@@ -118,11 +118,11 @@ button {
 	position: relative;
 }
 
-.indexInfo:hover .bandInfo {
+.indexInfo:hover .indexName {
 	display: flex
 }
 
-.bandInfo {
+.indexName {
 	/*border: 1px solid blue;*/
 	position: absolute;
 	z-index: 2;
@@ -136,7 +136,7 @@ button {
 	text-align: center;
 }
 
-.bandInfo a {
+.indexName a {
 	position: relative;
 	font-size: 22px;
 	font-weight: 500;
