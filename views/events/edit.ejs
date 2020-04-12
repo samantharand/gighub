@@ -1,80 +1,88 @@
 <%- include('../partials/header.ejs') %>
-<h2>EDIT YOUR EVENT!</h2>
+<div class="eachPage">
 
-<form method="POST" enctype="multipart/form-data" action="/events/<%=event._id%>?_method=PUT">
-	<fieldset>
-		<legend>Add a new event</legend>
-		<div>
-			 <label for="name">*NAME</label>
-        	<input 
-        		type="text" 
-        		name="name" 
-        		id="name" 
-        		value="<%= event.name %>" 
+  <div class="pageName">
+  
+    <h3>edit event</h3>
+    
+  </div>
+
+  <div class="editPages">
+
+  <form method="POST" enctype="multipart/form-data" action="/events/<%=event._id%>?_method=PUT">
+  	<fieldset>
+  		<legend>Add a new event</legend>
+  		<div>
+  			 <label for="name">*NAME: </label>
+          	<input 
+          		type="text" 
+          		name="name" 
+          		id="name" 
+          		value="<%= event.name %>" 
+              required
+          	/>
+  		</div>
+      	<div>
+      		 <label for="date">*DATE: </label>
+      		 <input 
+      		 	type="date" 
+      		 	name="date" 
+      		 	id="date"
+            value="<%= newDate %>"
             required
-        	/>
-		</div>
-    	<div>
-    		 <label for="date">*DATE</label>
-    		 <input 
-    		 	type="date" 
-    		 	name="date" 
-    		 	id="date"
-          value="<%= newDate %>"
-          required
-          /> 
-          <!-- need to figure out how to set value to date -->
-    	</div>
-      <div>
-         <label for="time">*TIME</label>
-         <input 
-          type="time" 
-          name="time" 
-          id="time"
-          value='<%=event.time%>'
-          required
-         />
-      </div>
-    	<div>
-    		<label for="location">*LOCATION</label>
-    		<input 
-    			type="string" 
-    			name="location"
-    			id="location"
-          value="<%= event.location %>"
-          required 
-    		/>
-    	</div>
-    	<div>
-    		<label for="eventPhoto">Event Photo</label>
-        <input type="file" id="eventPhoto" name="eventPhoto" value="<%= event.eventPhoto %>" required>
-      </div>
-  		<div>
-  			<label for="details">DETAILS</label>
-  			<input 
-  				type="text" 
-  				name="details" 
-  				id="details" 
-          value="<%= event.details %>" 
-  			/>
-  		</div>
-  		<div>
-  			<label for="capacity">CAPACITY</label>
-  			<input 
-  				type="number" 
-  				name="capacity" 
-  				id="capacity" 
-          value="<%= event.capacity %>" 
-  			/>
-  		</div>
-  		<button>EDIT THE EVENT</button>
-	</fieldset>
-</form>
-
-  <form method="POST" action="/events/<%= event._id %>?_method=DELETE">
-    <button>Delete this event!</button>
+            /> 
+            <!-- need to figure out how to set value to date -->
+      	</div>
+        <div>
+           <label for="time">*TIME: </label>
+           <input 
+            type="time" 
+            name="time" 
+            id="time"
+            value='<%= event.time %>'
+            required
+           />
+        </div>
+      	<div>
+      		<label for="location">*LOCATION: </label>
+      		<input 
+      			type="string" 
+      			name="location"
+      			id="location"
+            value="<%= event.location %>"
+            required 
+      		/>
+      	</div>
+      	<div>
+      		<label for="eventPhoto">PHOTO: </label>
+          <input type="file" id="eventPhoto" name="eventPhoto" value="<%= event.eventPhoto %>" required>
+        </div>
+    		<div>
+    			<label for="details">DETAILS:</label>
+    			<input 
+    				type="text" 
+    				name="details" 
+    				id="details" 
+            value="<%= event.details %>" 
+    			/>
+    		</div>
+    		<div>
+    			<label for="capacity">CAPACITY:</label>
+    			<input 
+    				type="number" 
+    				name="capacity" 
+    				id="capacity" 
+            value="<%= event.capacity %>" 
+    			/>
+    		</div>
+    		<button>EDIT EVENT</button>
+  	</fieldset>
   </form>
 
+    <form method="POST" action="/events/<%= event._id %>?_method=DELETE">
+      <button>DELETE <%= event.name.toUpperCase() %></button>
+    </form>
+</div>
 
 
 

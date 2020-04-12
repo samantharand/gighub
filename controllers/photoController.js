@@ -22,7 +22,7 @@ const upload = multer({
 // index page
 router.get('/', async (req, res, next) => {
 	try {
-		const foundPhotos = await Photo.find()
+		const foundPhotos = await Photo.find().populate("user")
 
 		res.render('photos/index.ejs', {
 			photos: foundPhotos

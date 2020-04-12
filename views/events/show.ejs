@@ -53,6 +53,15 @@
 
 			<% } -%>
 			
+			<div class="edit">
+				
+				<% if(event.user._id == userId) { %>
+					
+					(<a href="/events/<%= event._id %>/edit">EDIT</a>)
+
+				<% } %>
+			
+			</div><!--  edit div -->
 		</div> <!-- event info -->
 
 		<div class="eventPhoto">
@@ -61,15 +70,6 @@
 
 		</div> <!-- event photo div -->
 
-		<div class="edit">
-			
-			<% if(event.user._id == userId) { %>
-				
-				<a href="/events/<%= event._id %>/edit">Edit!</a>
-
-			<% } %>
-		
-		</div><!--  edit div -->
 
 		<div class="comments">
 			
