@@ -151,6 +151,7 @@ button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-wrap: wrap;
 	/*margin-top: 50px;*/
 }
 
@@ -206,6 +207,14 @@ button {
 
 .indexInfo:hover .indexPhoto {
 	filter: grayscale(25%);
+}
+
+.photoIndexInfo {
+	display: flex;
+	justify-content: flex-end;
+	font-size: .75em;
+	margin-top: -12px;
+	padding-right: 15px;
 }
 
 /*trying to get the cool layout on event page vv */

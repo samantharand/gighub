@@ -1,13 +1,39 @@
 <%- include('../partials/header.ejs') %>
 	
-	<h2> ALL PICS</h2>
+<div class="eachPage">
 
-	<div class="photoGrid">
-		<% photos.forEach((photo) => { %>
-			<a href="/users/<%= photo.user %>"><img class="photoGridPics" src="/<%= photo.pic %>" height="300"></a>
-		<%})%>
+	<div class="pageName">
+	
+		<h3>events</h3>
+		
 	</div>
 
+	<%= message %>
+
+	<div class="cardGrid">
+
+		<% photos.forEach((photo) => { %>
+
+			<div class="indexInfo">
+				
+				<div class="photoCard">
+
+					<a href="/users/<%= photo.user %>"><img class="indexPhoto" src="/<%= photo.pic %>" height="300"></a>
+				
+					<div class="photoIndexInfo">
+						<a href="/users/<%= photo.user %>">
+							<p><strong>photo by </strong> <%=photo.user.username%></p>
+						</a>
+					</div>
+				</div>
+
+			</div>
+
+		<% }) %>
+
+	</div>
+
+</div>
 
 
 <%- include('../partials/footer.ejs') %>
