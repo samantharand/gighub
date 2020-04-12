@@ -7,6 +7,8 @@ const Photo = require('../models/photo')
 const multer = require('multer')
 const requireAuth = require('../lib/requireAuth')
 const userAuth = require('../lib/userAuth')
+const bcrypt = require('bcrypt')
+
 const storage = multer.diskStorage({
 	destination: function(req, file, cb) {
 		cb(null, './uploads/user')
@@ -83,7 +85,7 @@ router.put('/:id', upload.single('profilePhoto'), async (req, res, next) => {
 			req.body.profilePhoto = req.file.path
 		}
 		const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {new: true})
-		
+		console.log('this is req.body of the orgin edit', req.body)
 		res.redirect(`/users/${updatedUser._id}`)
 	} catch (error) {
 		next(error)
@@ -121,6 +123,32 @@ router.post('/:eventId', async (req, res, next) => {
 
 		res.redirect('/events/' + event.id)
 		console.log("new event.attendees[0].username", event.attendees[0].username);
+	} catch (error) {
+		next(error)
+	}
+})
+
+router.get('/:id/newPassword', async (req, res, next) => {
+  try {
+  		const foundUser = await User.findById(req.params.id)
+  		console.log('this is req.body in get', req.body)
+  		console.log("this is the foundUser", foundUser)
+  		res.render('users/newPassword.ejs', {user: foundUser})
+  	}catch(error){
+  		next(error)
+  	}
+  })
+router.put('/:id/newPassword', async (req, res, next) => {
+	try {
+			const salt = bcrypt.genSaltSync(10)
+			const hashedPassword = bcrypt.hashSync(req.body.password, salt)
+			console.log(hashedPassword)
+
+		console.log('this is req.body', req.body)
+
+		const updatedUser = await User.findByIdAndUpdate(req.params.id, {password: hashedPassword}, {new: true})
+		
+		res.redirect(`/users/${req.params.id}`)
 	} catch (error) {
 		next(error)
 	}

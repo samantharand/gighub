@@ -14,6 +14,7 @@
 
 	</div>
 
+
 	<div class="authPages">
 
 		<form method="POST" enctype="multipart/form-data" action="/auth/register">
@@ -38,11 +39,7 @@
 						required
 					/ >
 				</div>
-				<div>
-					<label for="profilePhoto">*PROFILE PIC:</label>
-					<input type="file" id="profilePhoto" name="profilePhoto">
-				</div>
-				<div>
+			
 					<label for="location">LOCATION:</label>
 					<input 
 						type="text" 
@@ -63,12 +60,6 @@
 				<button>CREATE ACCOUNT</button>
 			</fieldset>
 		</form>
-	</div>
-	<div class="required">
-		
-		<p>* marks required</p>
-
-	</div>
 
 </div>
 <%- include('../partials/footer.ejs') %>

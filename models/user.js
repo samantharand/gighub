@@ -9,7 +9,10 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	profilePhoto: String,
+	profilePhoto:{ 
+		type: String,
+		default: "uploads/user/default.png"
+	},
 	age: Number,
 	location: String,
 	// attending: [Events.schema],
