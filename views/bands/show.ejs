@@ -12,7 +12,7 @@
 			
 			<p><i><%= band.name.toUpperCase() %></i></p>
 
-			<a href="/users/<%=band.user.id%>"><%=band.user.username%></a>
+			<p>managed by: <a href="/users/<%=band.user.id%>"><%=band.user.username%></a></p>
 			
 			<% if (band.formed) { -%>
 			

@@ -259,7 +259,7 @@ button {
 
 /*show page vvv */
 
-.userShowPage {
+.userShowPage, .bandShowPage {
 	display: flex;
 	align-items: : center;
 	/*justify-content: center;*/
@@ -269,26 +269,33 @@ button {
 
 }
 
-.userPicAndInfo {
+.userPicAndInfo, .bandPicAndInfo {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 }
 
-.userPhotoShowPage {
+.userPhotoShowPage, .bandPhotoShowPage {
 	height: 10%;
 	width: 10%;
 }
 
 .userPhotoShowPage > img {
 	height: 200px;
+	 margin-left: -180px;
 }
 
-.basicUserInfo {
+ .bandPhotoShowPage > img {
+ 	height: 300px;
+ 	margin-left: -180px;
+ }
+
+.basicUserInfo, .basicBandInfo {
 	width: 100%;
 	background: url('./purpleGrain.png');
 	box-shadow: -9px -5px 11px -1px rgba(36,36,36,0.26);
-	margin-left: 120px;
+	margin-left: 200px;
 	margin-top: 80px;
 	width: 40%;
 	padding: 20px;
