@@ -97,6 +97,7 @@ button {
 .cardGrid {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 }
 
 /*individual user cards*/
@@ -104,10 +105,44 @@ button {
 .photoCard {
 	display: flex;
 	flex-direction: column;
-	border: 1px solid black;
+	/*border: 1px solid yellow;*/
 	margin: 5px;
 	overflow: scroll;
 }
+
+.indexInfo {
+	/*border: 1px solid red;*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.indexInfo:hover .bandInfo {
+	display: flex
+}
+
+.bandInfo {
+	/*border: 1px solid blue;*/
+	position: absolute;
+	z-index: 2;
+	background-color: rgba(219,217,224, .5);
+	height: 87%;
+	width: 86%;
+	display: none;
+	/*display: flex;*/
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.bandInfo a {
+	position: relative;
+	font-size: 22px;
+	font-weight: 500;
+	color: #5D576B;
+}
+
 
 /*user card photo*/
 .indexPhoto {
@@ -115,7 +150,7 @@ button {
 	height: 200px;
 }
 
-.indexPhoto:hover {
+.indexInfo:hover .indexPhoto {
 	filter: grayscale(25%);
 }
 

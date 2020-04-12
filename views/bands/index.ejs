@@ -7,10 +7,17 @@
 	<div class="cardGrid">
 
 		<% bands.forEach(band => { %>
+			
+			<div class="indexInfo">
+	
+				<div class="bandInfo">
+					<a href="/bands/<%=band.id%>"><%=band.name%></a>
+				</div>
 
-			<div class="photoCard">	
-				<a href="/bands/<%=band.id%>"><img class="indexPhoto" src="<%= band.bandPhoto %>"></a>
-				<a href="/bands/<%=band.id%>"><%=band.name%></a>
+				<div class="photoCard">	
+					<a href="/bands/<%=band.id%>"><img class="indexPhoto" src="<%= band.bandPhoto %>"></a>
+				</div>
+				
 			</div>
 		
 		<% }) %>
