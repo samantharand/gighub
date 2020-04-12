@@ -58,7 +58,7 @@ h2 {
 	letter-spacing: 2em;
 }
 
-.authPages, .required, .errorMessage {
+.authPages, .required, .errorMessage, .editPages {
 	display: flex;
 	flex-direction: column;
 	border: 1px #4E5340 solid;
@@ -306,6 +306,23 @@ button {
 }
 
 /*show page ^^^ */
+
+/*edit pages vvv*/
+
+.editPages {
+	display: flex;
+	flex-direction: column;
+	border: 1px #4E5340 solid;
+	/*padding: 15px;*/
+	/*width: 50%;*/
+	overflow: scroll;
+	align-items: center;
+	margin: 0 auto;
+}
+
+
+
+/*edit pages ^^^*/
 
 img	{
 	padding: 5px;
