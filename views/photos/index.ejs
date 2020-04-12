@@ -4,7 +4,7 @@
 
 	<div class="pageName">
 	
-		<h3>events</h3>
+		<h3>photos</h3>
 		
 	</div>
 
@@ -18,10 +18,10 @@
 				
 				<div class="photoCard">
 
-					<a href="/users/<%= photo.user %>"><img class="indexPhoto" src="/<%= photo.pic %>" height="300"></a>
+					<a href="/users/<%= photo.user.id %>"><img class="indexPhoto" src="/<%= photo.pic %>" height="300"></a>
 				
 					<div class="photoIndexInfo">
-						<a href="/users/<%= photo.user %>">
+						<a href="/users/<%= photo.user.id %>">
 							<p><strong>photo by </strong> <%=photo.user.username%></p>
 						</a>
 					</div>

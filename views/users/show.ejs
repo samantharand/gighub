@@ -36,16 +36,16 @@
 				</ul>		
 			</div>
 
+			<div class="adminControls">
+				
+				<% if (userId == user._id) {%>
+					<p> (<a href="/users/<%= user._id %>/edit">EDIT</a>) </p>
+				<%}%>
+			
+			</div>
 
 		</div> <!-- .basicUserInfo -->
 	
-		<div class="adminControls">
-			
-			<% if (userId == user._id) {%>
-				<p> (<a href="/users/<%= user._id %>/edit">EDIT</a>) </p>
-			<%}%>
-		
-		</div>
 
 	</div>	<!-- pic and info -->
 
@@ -53,18 +53,19 @@
 	<div class="userPhotosShowPage">
 		<p>photos uploaded:</p>
 
-		<div class="photoGrid">
+		<div class="userPhotoGrid">
 
 			<% photos.forEach((photo) => { %>
+				<div class="photoGridPicsParent">
+					<% if (userId == user._id) { %>
 
-				<% if (userId == user._id) { %>
+						<a href="/photos/<%=photo.id%>"><img class="photoGridPics" src="/<%= photo.pic %>" height="300"></a>
 
-					<a href="/photos/<%=photo.id%>"><img class="photoGridPics" src="/<%= photo.pic %>" height="300"></a>
-
-				<% } else { %>
-					
-					<img class="photoGridPics" src="/<%= photo.pic %>" height="300">
-				<% } %>
+					<% } else { %>
+						
+						<img class="photoGridPics" src="/<%= photo.pic %>" height="300">
+					<% } %>
+				</div>
 
 			<% }) %>
 		
