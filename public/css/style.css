@@ -5,6 +5,21 @@ body {
 	color: #4E5340;
 }
 
+.pageName {
+	height: 80vh;
+	position: absolute;
+	display: flex;
+	align-items: center;
+}
+
+h3 {
+	font-weight: 200;
+	writing-mode: vertical-rl;
+	text-orientation: upright;
+	margin-left: 0;
+	font-size: 20px;
+}
+
 .errorMessage {
 	color: maroon;
 	font-weight: 200;
@@ -59,21 +74,21 @@ button {
 }
 
 /*photo index display*/
-.photoGrid {
+/*.photoGrid {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-}
+}*/
 
 /*photo grid pictures*/
-.photoGridPics {
+/*.photoGridPics {
 	height: 250px;
 	filter: grayscale(100%);
 }
 
 .photoGridPics:hover {
 	filter: grayscale(25%);
-}
+}*/
 
 /*photo index display*/
 /*.photoGrid {
@@ -98,6 +113,7 @@ button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-top: 50px;
 }
 
 /*individual user cards*/
