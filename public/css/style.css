@@ -7,11 +7,17 @@ body {
 
 .errorMessage {
 	color: maroon;
+	font-weight: 200;
 }
 
 .goodMessage {
 	position: relative;
 	margin-bottom: -25px;
+	font-weight: 200;
+}
+
+.contact {
+	font-weight: 300;
 }
 
 header {
@@ -46,6 +52,10 @@ a:hover {
 
 	color: #697268;
 	font-style: italic;
+}
+
+button {
+	margin: 5px 0;
 }
 
 /*photo index display*/
@@ -112,14 +122,15 @@ a:hover {
 /*trying to get the cool layout on event page vv */
 .entireEvent, .homePage {
 	margin-left: 200px;
-	margin-top: 150px;
+	margin-top: 100px;
 }
 
 .eventInfo, .siteInfo {
 	background: url("./purpleGrain.png") thistle;
+	overflow: scroll;
 	opacity: 95%;
 	width: 350px;
-	height: 450px;
+	height: 425px;
 	padding: 10px;
 	margin-top: 50px;
 	position: absolute;
@@ -127,8 +138,44 @@ a:hover {
 }
 
 .edit {
-	margin-top: 50px;
+	margin-top: 25px;
 	font-size: 15px;
+}
+
+.comments {
+	background: url("./lightPurpleGrain.png") lavenderblush;
+	opacity: 95%;
+	overflow: scroll;
+	height: 300px;
+	margin-left: 500px;
+	margin-top: -250px;
+	padding: 10px;
+	box-shadow: -9px -5px 11px -1px rgba(36,36,36,0.26);
+
+}
+
+.commentForm {
+	display: flex;
+	flex-direction: column;	
+}
+
+.commentsDisplay {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.entireComment {
+	padding: 5px;
+}
+
+.commentBody {
+	border: 1px #4E5340 solid;
+	padding: 2px;
+	margin: 2px;
+}
+
+.commentInfo {
+	font-size: 12px;
 }
 
 .eventPhoto, .homePhoto {

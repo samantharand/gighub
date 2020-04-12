@@ -4,11 +4,11 @@
 	<%= message %>
 
 
-	<div class="photoCard">
+	<div class="cardGrid">
 
 		<% bands.forEach(band => { %>
 
-			<div class="card">	
+			<div class="photoCard">	
 				<a href="/bands/<%=band.id%>"><img class="indexPhoto" src="<%= band.bandPhoto %>"></a>
 				<a href="/bands/<%=band.id%>"><%=band.name%></a>
 			</div>

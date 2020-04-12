@@ -11,6 +11,7 @@
         		name="name" 
         		id="name" 
         		value="<%= event.name %>" 
+            required
         	/>
 		</div>
     	<div>
@@ -20,6 +21,7 @@
     		 	name="date" 
     		 	id="date"
           value="<%= newDate %>"
+          required
           /> 
           <!-- need to figure out how to set value to date -->
     	</div>
@@ -30,7 +32,7 @@
           name="time" 
           id="time"
           value='<%=event.time%>'
-          
+          required
          />
       </div>
     	<div>
@@ -39,12 +41,13 @@
     			type="string" 
     			name="location"
     			id="location"
-          value="<%= event.location %>" 
+          value="<%= event.location %>"
+          required 
     		/>
     	</div>
     	<div>
     		<label for="eventPhoto">Event Photo</label>
-        <input type="file" id="eventPhoto" name="eventPhoto" value="<%= event.eventPhoto %>">
+        <input type="file" id="eventPhoto" name="eventPhoto" value="<%= event.eventPhoto %>" required>
       </div>
   		<div>
   			<label for="details">DETAILS</label>
