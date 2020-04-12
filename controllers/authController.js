@@ -49,9 +49,10 @@ router.post('/register', upload.single('profilePhoto'), async (req, res, next) =
 			const createdUser = await User.create({
 				username: desiredUsername,
 				password: hashedPassword,
-				profilePhoto: req.file.path,
 				age: req.body.age,
-				location: req.body.location
+				location: req.body.location,
+
+				// profilePhoto: req.file.path,
 			})
 
 			req.session.loggedIn = true
