@@ -1,42 +1,78 @@
 <%- include('../partials/header.ejs') %>
 
-	<h2><%= user.username %></h2>
+<div class="userShowPage">
 
-	<div>
-		<img src="/<%= user.profilePhoto %>" height="300">
+	<div class="pageName">
+	
+		<h3><%= user.username %></h3>
+		
 	</div>
 
-	<div>
-		<p>age: <%= user.age %></p>
-	</div>
-	<div>
-		<p>location: <%= user.location %></p>
-	</div>
+	<div class="userPicAndInfo">
 
-	<div>
-		<p>events attended:</p>
-		<ul>
-			<% events.forEach((event)=> { %>
-				<li>
-					<a href="/events/<%=event._id%>"><%=event.name%></a>
-				</li>
-			<% }) %>		
-	</div>
+		<div class="userPhotoShowPage">
+			<img src="/<%= user.profilePhoto %>">
+		</div>
 
-	<div>
-		<p>photos uploaded:</p>
-		<div class="photoGrid">
-		<% photos.forEach((photo) => { %>
+
+
+		<div class="basicUserInfo">
+
+
+			<div class="userInformationShowPage">
+				<p>age: <%= user.age %></p>
+
+				<p>location: <%= user.location %></p>
+			</div>
+
+			<div class="userEvents">
+				<p>events attended:</p>
+				<ul>
+					<% events.forEach((event)=> { %>
+						<li>
+							<a href="/events/<%=event._id%>"><%=event.name%></a>
+						</li>
+					<% }) %>
+				</ul>		
+			</div>
+
+
+		</div> <!-- .basicUserInfo -->
+	
+		<div class="adminControls">
+			
 			<% if (userId == user._id) {%>
-				<a href="/photos/<%=photo.id%>"><img class="photoGridPics" src="/<%= photo.pic %>" height="300"></a>
-			<% } else { %>
-				
-				<img class="photoGridPics" src="/<%= photo.pic %>" height="300">
+				<p> (<a href="/users/<%= user._id %>/edit">EDIT</a>) </p>
 			<%}%>
-		<%})%>
+		
+		</div>
+
+	</div>	<!-- pic and info -->
+
+
+	<div class="userPhotosShowPage">
+		<p>photos uploaded:</p>
+
+		<div class="photoGrid">
+
+			<% photos.forEach((photo) => { %>
+
+				<% if (userId == user._id) { %>
+
+					<a href="/photos/<%=photo.id%>"><img class="photoGridPics" src="/<%= photo.pic %>" height="300"></a>
+
+				<% } else { %>
+					
+					<img class="photoGridPics" src="/<%= photo.pic %>" height="300">
+				<% } %>
+
+			<% }) %>
+		
+		</div>
+
 	</div>
-	</div>
-<% if (userId == user._id) {%>
-		<p>(<a href="/users/<%= user._id %>/edit">EDIT</a>)</p>
-	<%}%>
+
+
+
+</div> <!-- .showpage -->
 <%- include('../partials/footer.ejs') %>
