@@ -1,21 +1,29 @@
 <%- include('../partials/header.ejs') %>
 	
-	<h2> ALL EVENTS</h2>
+	<h2>events</h2>
 	<%= message %>
 
+
 	<div class="cardGrid">
-		
-		<% events.forEach((event) => { %>	
+
+		<% events.forEach(event => { %>
 			
-			<div class="photoCard">
+			<div class="indexInfo">
+	
+				<div class="indexName">
+					<a href="/events/<%=event.id%>"><%=event.name%></a>
+				</div>
+
+				<div class="photoCard">	
+					<a href="/events/<%=event.id%>"><img class="indexPhoto" src="<%= event.eventPhoto %>"></a>
+				</div>
 				
-				<a href="/events/<%=event._id%>"><img src="<%=event.eventPhoto%>" class="indexPhoto"></a>
-				<a href="/events/<%=event._id%>"><%= event.name %></a>		
-			
 			</div>
 		
-		<%})%>
+		<% }) %>
 	
 	</div>
 
+
 <%- include('../partials/footer.ejs') %>
+

@@ -1,12 +1,38 @@
 body {
 	width: 75vw;
-	margin: auto;
+	margin: 0 auto;
 	background-color: #E2E8DD;
 	color: #4E5340;
 }
 
+.pageName {
+	height: 80vh;
+	position: absolute;
+	display: flex;
+	align-items: center;
+}
+
+h3 {
+	font-weight: 200;
+	writing-mode: vertical-rl;
+	text-orientation: upright;
+	margin-left: 0;
+	font-size: 20px;
+}
+
 .errorMessage {
 	color: maroon;
+	font-weight: 200;
+}
+
+.goodMessage {
+	position: relative;
+	margin-bottom: -25px;
+	font-weight: 200;
+}
+
+.contact {
+	font-weight: 300;
 }
 
 header {
@@ -16,16 +42,15 @@ header {
 	color:  #4E5340;
 	position: fixed;
 	width: 75vw;
-
 }
 
 main {
+	margin: 0 auto;
 	height: 85vh;
 	overflow: scroll;
 	margin-top: 50px;
 	padding: 5px;
 	padding-top: 25px;
-	/*border-right: 3px solid #4E5340;*/
 }
 
 h2 {
@@ -39,27 +64,31 @@ a {
 }
 
 a:hover {
-	/*font-weight: 400;*/
+
 	color: #697268;
 	font-style: italic;
 }
 
+button {
+	margin: 5px 0;
+}
+
 /*photo index display*/
-.photoGrid {
+/*.photoGrid {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-}
+}*/
 
 /*photo grid pictures*/
-.photoGridPics {
+/*.photoGridPics {
 	height: 250px;
 	filter: grayscale(100%);
 }
 
 .photoGridPics:hover {
 	filter: grayscale(25%);
-}
+}*/
 
 /*photo index display*/
 /*.photoGrid {
@@ -83,6 +112,8 @@ a:hover {
 .cardGrid {
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
 }
 
 /*individual user cards*/
@@ -90,10 +121,44 @@ a:hover {
 .photoCard {
 	display: flex;
 	flex-direction: column;
-	border: 1px solid black;
+	/*border: 1px solid yellow;*/
 	margin: 5px;
 	overflow: scroll;
 }
+
+.indexInfo {
+	/*border: 1px solid red;*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.indexInfo:hover .indexName {
+	display: flex
+}
+
+.indexName {
+	/*border: 1px solid blue;*/
+	position: absolute;
+	z-index: 2;
+	background-color: rgba(219,217,224, .5);
+	height: 87%;
+	width: 86%;
+	display: none;
+	/*display: flex;*/
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.indexName a {
+	position: relative;
+	font-size: 22px;
+	font-weight: 500;
+	color: #5D576B;
+}
+
 
 /*user card photo*/
 .indexPhoto {
@@ -101,22 +166,22 @@ a:hover {
 	height: 200px;
 }
 
-.indexPhoto:hover {
+.indexInfo:hover .indexPhoto {
 	filter: grayscale(25%);
 }
 
 /*trying to get the cool layout on event page vv */
-.entireEvent {
+.entireEvent, .homePage {
 	margin-left: 200px;
-	margin-top: 150px;
+	margin-top: 100px;
 }
 
-.eventInfo {
-	/*background-image: url("./pinktest.png")*/
+.eventInfo, .siteInfo {
 	background: url("./purpleGrain.png") thistle;
+	overflow: scroll;
 	opacity: 95%;
 	width: 350px;
-	height: 450px;
+	height: 425px;
 	padding: 10px;
 	margin-top: 50px;
 	position: absolute;
@@ -124,11 +189,47 @@ a:hover {
 }
 
 .edit {
-	margin-top: 50px;
+	margin-top: 25px;
 	font-size: 15px;
 }
 
-.eventPhoto {
+.comments {
+	background: url("./lightPurpleGrain.png") lavenderblush;
+	opacity: 95%;
+	overflow: scroll;
+	height: 300px;
+	margin-left: 500px;
+	margin-top: -250px;
+	padding: 10px;
+	box-shadow: -9px -5px 11px -1px rgba(36,36,36,0.26);
+
+}
+
+.commentForm {
+	display: flex;
+	flex-direction: column;	
+}
+
+.commentsDisplay {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.entireComment {
+	padding: 5px;
+}
+
+.commentBody {
+	border: 1px #4E5340 solid;
+	padding: 2px;
+	margin: 2px;
+}
+
+.commentInfo {
+	font-size: 12px;
+}
+
+.eventPhoto, .homePhoto {
 	margin-top: -50px;
 	margin-left: 250px;
 	height: 450px;
@@ -139,8 +240,6 @@ a:hover {
 	overflow: hidden;
 }
 /*trying to get the cool layout on event page ^^ */
-
-
 img	{
 	padding: 5px;
 }

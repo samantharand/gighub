@@ -6,80 +6,60 @@
 		<div class="eventInfo">
 
 			<h2><%= event.name %></h2>
-			<p>hosted by: <a href="/users/<%= event.user._id %>"><%= event.user.username %></a></p>
+			<p><strong>Hosted By:</strong> <a href="/users/<%= event.user._id %>"><%= event.user.username %></a></p>
 			
-			<p> When: <%= event.date.toDateString() %> @ <%= event.time.toLocaleString()%></p>
+			<p><strong>When:</strong> <%= event.date.toDateString() %> @ <%= event.time.toLocaleString()%></p>
 
 			
-
-			<% if (event.attendees.find( ({_id}) => _id == userId  )) { -%>
-
-				<p> Where: <%= event.location %> </p>
-				<p>Have fun at <strong><%= event.name %></strong></p>
+			<% if (loggedIn) { -%>
 				
+				<% if (event.attendees.find( ({_id}) => _id == userId  )) { -%>
+
+					<p><strong>Where:</strong> <%= event.location %> </p>
+					<p>Have fun at <strong><%= event.name %></strong></p>
+					
+				<% } else { -%>
+					
+					<p><strong>Where:</strong> <i>you must be attending to see the location</i></p>
+
+					<form method="POST" action="/users/<%= event.id %>">
+						<button>Attend</button>
+					</form>
+
+				<% } -%>
+
 			<% } else { -%>
 				
-				<p>Where: <i>you must be attending to see the location</i></p>
-
-				<form method="POST" action="/users/<%= event.id %>">
-					<button>Attend</button>
-				</form>
+				<i>you must be logged in to access further information about <strong><%= event.name %></strong></i>
 
 			<% } -%>
 
 
+			<% if (event.attendees.length > 0) { -%>
 
-			<p>Attendees</p>
+				<p><strong>Attendees</strong></p>
 
-			<ul>
-				<% for(let i = 0; i < event.attendees.length; i++) { %>
-						<li>
-							<a href="/users/<%= event.attendees[i]._id %>"><%= event.attendees[i].username %></a>	
-						</li>
-				<% } %>
-			</ul>
-
-			<% if(username) { %>
-
-				<form method="POST" action="/comments/<%= event.id %>">
-					<textarea name="text" placeholder="Questions? Thoughts?"></textarea>
-					
-					<button>Add a comment</button>
-
-				</form>
-			
 				<ul>
-
-				<% event.comments.forEach((comment)=> { %>
-
-					<li>
-						<%= comment.text%>
-						
-						(<%= comment.date.toLocaleString([], {hour: '2-digit', minute: '2-digit'}) %>) by
-						<a href="/users/<%= comment.user._id %>"><%= comment.user.username %></a>
-
-						<% if (userId == comment.user.id) { -%>
-							
-							<a href="/comments/<%=event.id%>/<%=comment.id%>/edit">edit</a>
-							
-						<% } -%>
-					</li>
-
-				<% }) %>
-
-			<% } else { %>
-
-					<p>you must be logged into access comments</p>
+					<% for(let i = 0; i < event.attendees.length; i++) { %>
+							<li>
+								<a href="/users/<%= event.attendees[i]._id %>"><%= event.attendees[i].username %></a>	
+							</li>
+					<% } %>
+				</ul>
+					
+			<% } else { -%>
 				
-			<%}%>
+				<i>no one has rsvp'd yet :( </i>
 
-			</ul>
+			<% } -%>
 			
 		</div> <!-- event info -->
 
 		<div class="eventPhoto">
+
 			<img src="/<%= event.eventPhoto %>" height="550px">
-		</div>
+
+		</div> <!-- event photo div -->
 
 		<div class="edit">
 			
@@ -89,7 +69,61 @@
 
 			<% } %>
 		
-		</div>
+		</div><!--  edit div -->
+
+		<div class="comments">
+			
+			<% if(username) { %>
+
+				<form class="commentForm" method="POST" action="/comments/<%= event.id %>">
+					<textarea name="text" placeholder="Questions? Thoughts?"></textarea>
+					
+					<button>Add a comment</button>
+
+				</form>
+			
+			<div class="commentsDisplay">
+			
+				<% event.comments.forEach((comment)=> { %>
+					<div class="entireComment">
+
+						<div class="commentBody">
+								
+							<%= comment.text%>
+							
+						</div>
+
+						<div class="commentInfo">
+							(<%= comment.date.toLocaleString([], {hour: '2-digit', minute: '2-digit'}) %>) by
+
+								<a href="/users/<%= comment.user._id %>"><%= comment.user.username %>
+								</a>
+
+							<% if (userId == comment.user.id) { -%>
+								
+								<a class="commentEdit" href="/comments/<%=event.id%>/<%=comment.id%>/edit">
+									edit
+								</a>
+								
+							<% } -%>
+
+						</div>
+
+					</div>
+
+				<% }) %>
+
+			</div> <!-- comments display div -->
+
+			<% } else { %>
+
+					<i>you must be logged into access comments</i>
+				
+			<%}%>
+
+
+		</div> <!-- class comments -->
+
 	
 	</div> <!-- entire event -->
 

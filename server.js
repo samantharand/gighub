@@ -56,6 +56,10 @@ app.get('/', (req, res) => {
 	res.render('home.ejs')
 })
 
+app.get('/contact', (req, res) => {
+	res.render('contact.ejs')
+})
+
 app.get('*', (req, res) => {
 	res.render('404.ejs')
 })
