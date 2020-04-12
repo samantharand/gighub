@@ -44,7 +44,7 @@
 					
 				<% } else { -%>
 						
-					<p class="noEvents">none yet :(</p>
+					<p class="noneYet">none yet :(</p>
 
 				<% } -%>
 			</div>
@@ -67,23 +67,30 @@
 
 		<h2>photos uploaded:</h2>
 
-		<div class="userPhotoGrid">
+		<% if (photos.length > 0) { -%>
+			
+			<div class="userPhotoGrid">
 
-			<% photos.forEach((photo) => { %>
-				<div class="photoGridPicsParent">
-					<% if (userId == user._id) { %>
+				<% photos.forEach((photo) => { %>
+					<div class="photoGridPicsParent">
+						<% if (userId == user._id) { %>
 
-						<a href="/photos/<%=photo.id%>"><img class="photoGridPics" src="/<%= photo.pic %>" height="300"></a>
+							<a href="/photos/<%=photo.id%>"><img class="photoGridPics" src="/<%= photo.pic %>" height="300"></a>
 
-					<% } else { %>
-						
-						<img class="photoGridPics" src="/<%= photo.pic %>" height="300">
-					<% } %>
-				</div>
+						<% } else { %>
+							
+							<img class="photoGridPics" src="/<%= photo.pic %>" height="300">
+						<% } %>
+					</div>
 
-			<% }) %>
-		
-		</div>
+				<% }) %>
+			
+			</div>
+
+		<% } else { -%>
+			<p>none yet :( </p>
+		<% } -%>
+
 
 	</div>
 
