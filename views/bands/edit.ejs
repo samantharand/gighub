@@ -39,12 +39,12 @@
 					/>
 				</div>
 			</fieldset>
-			<button>EDIT BAND!</button>
+			<button>EDIT BAND</button>
 		</form>
 	
 		<form method="POST" action="/bands/<%=band.id%>?_method=DELETE">
 
-			<button>DELETE</button>
+			<button>DELETE <%= band.name.toUpperCase() %></button>
 
 		</form>
 
