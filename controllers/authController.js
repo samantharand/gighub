@@ -34,7 +34,7 @@ router.post('/register', upload.single('profilePhoto'), async (req, res, next) =
 		// if they do,
 		if(userWithSameUsername) {
 			// reload register page and display message 
-			req.session.message = "Sorry, that username already exists :("
+			req.session.message = "Sorry, that username already exists :( "
 			console.log("username exists");
 			res.redirect('/auth/register')
 		// else they dont
@@ -59,7 +59,7 @@ router.post('/register', upload.single('profilePhoto'), async (req, res, next) =
 			req.session.userId = createdUser._id
 			req.session.username = createdUser.username
 
-			req.session.message = "account created"
+			req.session.message = "account created :)"
 			console.log(createdUser);
 			res.redirect('/')
 		}
@@ -71,11 +71,9 @@ router.post('/register', upload.single('profilePhoto'), async (req, res, next) =
 
 // login page
 router.get('/login', (req, res) => {
-	message = req.session.message
-	req.session.message = undefined
-	res.render('auth/login.ejs', {
-		message: message
-	})
+	// message = req.session.message
+	// req.session.message = undefined
+	res.render('auth/login.ejs')
 })
 
 // login - check requirements 
