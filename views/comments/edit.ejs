@@ -1,16 +1,23 @@
 <%- include('../partials/header.ejs') %>
 
-	<form method="POST" action="/comments/<%=event.id%>/<%= comment.id %>?_method=PUT">
+<div class="entirePage">
+	
+	<div class="editComment">
+
+		<form method="POST" action="/comments/<%=event.id%>/<%= comment.id %>?_method=PUT">
+				
+			<textarea name="text" placeholder="Questions? Thoughts?" required>
+				<%=comment.text%>
+			</textarea>
 			
-		<textarea name="text" placeholder="Questions? Thoughts?" required>
-			<%=comment.text%>
-		</textarea>
-		
-		<button>edit comment</button>
-	</form>
+			<button>EDIT COMMENT</button>
+		</form>
+	</div>
 
 	<form method="POST" action="/comments/<%= event.id %>/<%=comment.id%>?_method=DELETE">
-		<button>Delete comment!</button>
+		<button class="deleteComment">DELETE COMMENT</button>
 	</form>
+
+</div>
 	
 <%- include('../partials/footer.ejs') %>

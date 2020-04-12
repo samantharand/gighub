@@ -320,7 +320,14 @@ button {
 	margin: 0 auto;
 }
 
+.editComment > form{
+	display: flex;
+	flex-direction: column;
+}
 
+.deleteComment {
+	width: 100%;
+}
 
 /*edit pages ^^^*/
 
