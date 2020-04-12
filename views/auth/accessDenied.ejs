@@ -1,9 +1,24 @@
 <%- include('../partials/header.ejs') %>
 
-<h2>ACCESS DENIED</h2>
-<p>hey that't not your account!</p>
-<a href="/auth/login">If it is, login here</a>
+<div class="eachPage">
 
-<%= message %>
+	<div class="pageName">
+	
+		<h3>access</h3>
+		<h3>denied</h3>
+		
+	</div>
+
+	<div class="authPages">
+		
+		<p>hey that't not your account!</p>
+		<p>Or if it is...<a href="/auth/login">login here</a
+		></p>
+
+	</div>
+
+	<%= message %>
+
+</div>
 
 <%- include('../partials/footer.ejs') %>

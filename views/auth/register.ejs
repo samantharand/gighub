@@ -8,61 +8,67 @@
 		
 	</div>
 
-	<p>* marks required</p>
-
 	<div class="errorMessage">
 
 		<p> <%= message %> </p>
 
 	</div>
 
-	<form method="POST" enctype="multipart/form-data" action="/auth/register">
-		<fieldset>
-			<div>
-				<label for="username">*USERNAME:</label>
-				<input 
-					type="text" 
-					name="username" 
-					id="username" 
-					placeholder="username" 
-					required
-				/ >
-			</div>
-			<div>
-				<label for="password">*PASSWORD:</label>
-				<input 
-					type="password" 
-					name="password" 
-					id="password" 
-					placeholder="password" 
-					required
-				/ >
-			</div>
-			<div>
-				<label for="profilePhoto">PROFILE PIC:</label>
-				<input type="file" id="profilePhoto" name="profilePhoto">
-			</div>
-			<div>
-				<label for="location">LOCATION:</label>
-				<input 
-					type="text" 
-					name="location" 
-					id="location" 
-					placeholder="zip code" 
-				/ >
-			</div>
-			<div>
-				<label for="age">AGE:</label>
-				<input 
-					type="number" 
-					name="age" 
-					id="age" 
-					placeholder="age" 
-				/ >
-			</div>
-			<button>CREATE ACCOUNT</button>
-		</fieldset>
-	</form>
+	<div class="authPages">
+
+		<form method="POST" enctype="multipart/form-data" action="/auth/register">
+			<fieldset>
+				<div>
+					<label for="username">*USERNAME:</label>
+					<input 
+						type="text" 
+						name="username" 
+						id="username" 
+						placeholder="username" 
+						required
+					/ >
+				</div>
+				<div>
+					<label for="password">*PASSWORD:</label>
+					<input 
+						type="password" 
+						name="password" 
+						id="password" 
+						placeholder="password" 
+						required
+					/ >
+				</div>
+				<div>
+					<label for="profilePhoto">PROFILE PIC:</label>
+					<input type="file" id="profilePhoto" name="profilePhoto">
+				</div>
+				<div>
+					<label for="location">LOCATION:</label>
+					<input 
+						type="text" 
+						name="location" 
+						id="location" 
+						placeholder="zip code" 
+					/ >
+				</div>
+				<div>
+					<label for="age">AGE:</label>
+					<input 
+						type="number" 
+						name="age" 
+						id="age" 
+						placeholder="age" 
+					/ >
+				</div>
+				<button>CREATE ACCOUNT</button>
+			</fieldset>
+		</form>
+	</div>
+	<div class="required">
+		
+		<p>* marks required</p>
+
+	</div>
 
 </div>
 <%- include('../partials/footer.ejs') %>
