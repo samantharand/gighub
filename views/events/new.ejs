@@ -1,78 +1,87 @@
 <%- include('../partials/header.ejs') %>
-<h2>NEW EVENT</h2>
+<div class="eachPage">
 
-<form method="POST" enctype="multipart/form-data" action="/events">
-	<fieldset>
-		<legend>Add a new event</legend>
-		<div>
-			 <label for="name">*NAME</label>
-        	<input 
-        		type="text" 
-        		name="name" 
-        		id="name" 
-        		placeholder="Enter events name" 
-        		required
-        	/>
-		</div>
-    	<div>
-    		 <label for="date">*DATE</label>
-    		 <input 
-    		 	type="date" 
-    		 	name="date" 
-    		 	id="date"
-          value="<%= todaysDate %>" 
-          required
-    		 />
-    	</div>
-    	<div>
-    		 <label for="time">*TIME</label>
-    		 <input 
-    		 	type="time" 
-    		 	name="time" 
-    		 	id="time"
-    		 	placeholder="09:00 PM" 
-    		 	required
-    		 />
-    	</div>
-    	<div>
-    		<label for="location">*LOCATION</label>
-    		<input 
-    			type="string" 
-    			name="location"
-    			id="location"
-    			placeholder="ENTER THE ADDRESS"
-    			required
-    		/>
-    	</div>
-      <div>
-        <label for="eventPhoto">*DISPLAY PIC:</label>
-        <input type="file" id="eventPhoto" name="eventPhoto"
-        required>
-      </div>
-  		<div>
-  			<label for="details">DETAILS</label>
-  			<input 
-  				type="text" 
-  				name="details" 
-  				id="details" 
-  				placeholder="ADD SOME INFO"
-  			/>
-  		</div>
-  		<div>
-  			<label for="capacity">CAPACITY</label>
-  			<input 
-  				type="number" 
-  				name="capacity" 
-  				id="capacity" 
-  				placeholder="HOW MANY PEOPLE"
-  			/>
-  		</div>
-  		<button>ADD THE EVENT</button>
-	</fieldset>
-</form>
+  <div class="pageName">
+  
+    <h3>new event</h3>
+    
+  </div>
 
+  <div class="newPages">
+    <form method="POST" enctype="multipart/form-data" action="/events">
+    	<fieldset>
+    		<legend>Add a new event</legend>
+    		<div>
+    			 <label for="name">*NAME</label>
+            	<input 
+            		type="text" 
+            		name="name" 
+            		id="name" 
+            		placeholder="Enter events name" 
+            		required
+            	/>
+    		</div>
+        	<div>
+        		 <label for="date">*DATE</label>
+        		 <input 
+        		 	type="date" 
+        		 	name="date" 
+        		 	id="date"
+              value="<%= todaysDate %>" 
+              required
+        		 />
+        	</div>
+        	<div>
+        		 <label for="time">*TIME</label>
+        		 <input 
+        		 	type="time" 
+        		 	name="time" 
+        		 	id="time"
+        		 	placeholder="09:00 PM" 
+        		 	required
+        		 />
+        	</div>
+        	<div>
+        		<label for="location">*LOCATION</label>
+        		<input 
+        			type="string" 
+        			name="location"
+        			id="location"
+        			placeholder="ENTER THE ADDRESS"
+        			required
+        		/>
+        	</div>
+          <div>
+            <label for="eventPhoto">*DISPLAY PIC:</label>
+            <input type="file" id="eventPhoto" name="eventPhoto"
+            required>
+          </div>
+      		<div>
+      			<label for="details">DETAILS</label>
+      			<input 
+      				type="text" 
+      				name="details" 
+      				id="details" 
+      				placeholder="ADD SOME INFO"
+      			/>
+      		</div>
+      		<div>
+      			<label for="capacity">CAPACITY</label>
+      			<input 
+      				type="number" 
+      				name="capacity" 
+      				id="capacity" 
+      				placeholder="HOW MANY PEOPLE"
+      			/>
+      		</div>
+      		<button>ADD THE EVENT</button>
+    	</fieldset>
+    </form>
+  </div>
 
-
+  <div class="required">
+    <p>*marks required</p>
+  </div>
 
 
 <%- include('../partials/footer.ejs') %>
