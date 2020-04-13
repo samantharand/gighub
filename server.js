@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const PORT = process.env.PORT
 const app = express()
+const googleMaps = require('@google/maps')
 
 require('./db/db')
 
@@ -60,9 +61,16 @@ app.get('/contact', (req, res) => {
 	res.render('contact.ejs')
 })
 
+app.get('/map', (req, res) => {
+	res.render('map.ejs', {
+		googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY
+	})
+})
+
 app.get('*', (req, res) => {
 	res.render('404.ejs')
 })
+
 
 app.listen(PORT, () => {
 	console.log(`Running on ${PORT}`);
