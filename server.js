@@ -4,9 +4,12 @@ const multer = require('multer')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const fetch = require('node-fetch')
+const NodeGeocoder = require('node-geocoder');
 const PORT = process.env.PORT
 const app = express()
 const googleMaps = require('@google/maps')
+const googleMapsApiKey = process.env.GOOGLE_MAPS_API_KEY
 
 require('./db/db')
 
@@ -62,6 +65,14 @@ app.get('/contact', (req, res) => {
 })
 
 app.get('/map', (req, res) => {
+	const GeocoderRequest = new googleMaps.maps.GeocoderRequest()
+	// const GeocoderRequest = googleMaps.maps.GeocoderRequest()
+	GeocoderRequest().geocode("3208, West Diversey Ave, Chicago IL")
+	//let location = GeocoderRequest.geocode("3208, West Diversey Ave, Chicago IL 60647");
+
+	console.log("request");
+	console.log(GeocoderRequest);
+
 	res.render('map.ejs', {
 		googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY
 	})
