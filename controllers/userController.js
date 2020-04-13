@@ -4,6 +4,7 @@ const User = require('../models/user')
 const Event = require('../models/event')
 const Band = require('../models/band')
 const Photo = require('../models/photo')
+const Comment = require('../models/comment')
 const multer = require('multer')
 const requireAuth = require('../lib/requireAuth')
 const userAuth = require('../lib/userAuth')
@@ -38,14 +39,13 @@ router.get('/', async (req, res, next) => {
 // show
 router.get('/:id',requireAuth, async (req, res, next) => {
 	try {
+		// const commentsToDelete = await allEventsUserHasCommentedOn.comments.id(req.params.id).remove()
+		// console.log(allUserComments)
 		const allEvents = await Event.find()
 		const foundAttending = await Event.find({'attendees._id': req.params.id})
-		console.log('found attending - ', foundAttending)
 	
-		// console.log("this is attedning users", userAttending) 
 		const userPhotos = await Photo.find({user: req.params.id})
 		const foundUser = await User.findById(req.params.id)
-console.log('this is users photos - \n', userPhotos)
 		res.render('users/show.ejs', {
 			user: foundUser,
 			photos: userPhotos,
@@ -97,8 +97,22 @@ router.put('/:id', upload.single('profilePhoto'), async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
   		if(req.session.userId == req.params.id){
+			const allEventsUserHasCommentedOn = await Event.find({'comments.user': req.params.id})
+			console.log(allEventsUserHasCommentedOn)
+			for(let i = 0; i < allEventsUserHasCommentedOn.length; i++){
+				console.log("these are all the comments")
+				console.log(allEventsUserHasCommentedOn[i].comments)
+				const newComments = allEventsUserHasCommentedOn[i].comments.filter(comment => comment.user != req.params.id)
+				console.log("these are the comments that are not by the current user\n")
+				console.log(newComments)
+				allEventsUserHasCommentedOn[i].comments = newComments
+				await allEventsUserHasCommentedOn[i].save()
+				console.log("this is all the new all events comments")
+				console.log(allEventsUserHasCommentedOn[i]) 
+			}
   			// console.log(user)
-  			await Photo.remove({user: req.params.id})
+			await Comment.deleteMany({'user': req.params.id})
+			await Photo.remove({user: req.params.id})
   			await Band.remove({user: req.params.id})
   			await Event.remove({user:req.params.id})
   			await User.findByIdAndRemove(req.params.id)
