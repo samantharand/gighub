@@ -29,7 +29,10 @@ const eventSchema = new mongoose.Schema({
 		type: String,
 		required:true
 	},
-	eventPhoto: String,
+	eventPhoto: {
+		type: String,
+		default: "css/images/defaultEvent.jpg"
+	},
 	details: String,
 	capacity: Number,
 	comments: [Comment.schema],

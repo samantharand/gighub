@@ -41,7 +41,6 @@ router.post('/', upload.single("bandPhoto"), async (req, res, next) => {
 
   		const bandToCreate = {
   			name: req.body.name,
-  			bandPhoto: req.file.path,
   			formed: req.body.formed,
   			genre: req.body.genre,
   			user: req.session.userId,

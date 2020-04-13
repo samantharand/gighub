@@ -45,14 +45,14 @@ router.get('/new', requireAuth, async (req, res) => {
 
 router.post('/', upload.single('eventPhoto'), async (req, res, next) => {
  	try {
-  		
+  	
 	  		const eventToCreate = {
 	  			name: req.body.name,
 	  			user: req.session.userId,
 	  			date: req.body.date,
           time: req.body.time,
 	  			location: req.body.location,
-	  			eventPhoto: req.file.path,
+	  			// eventPhoto: eventPhoto,
 	  			details: req.body.details,
 	  			capacity: req.body.capacity
 

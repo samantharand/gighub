@@ -5,7 +5,10 @@ const bandSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	bandPhoto: String,
+	bandPhoto: {
+		type: String,
+		default: "css/images/defaultbandphoto.jpg"
+	},
 	formed: Number,
 	genre: String,
 	user: {
