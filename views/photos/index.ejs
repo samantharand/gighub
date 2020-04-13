@@ -18,7 +18,15 @@
 				
 				<div class="photoCard">
 
-					<a href="/users/<%= photo.user.id %>"><img class="indexPhoto" src="/<%= photo.pic %>" height="300"></a>
+					<% if (photo.user.id === userId) { -%>
+
+						<a href="/photos/<%= photo.id %>"><img class="indexPhoto" src="/<%= photo.pic %>" height="300"></a>
+
+					<% } else { -%>
+						
+						<a href="/users/<%= photo.user.id %>"><img class="indexPhoto" src="/<%= photo.pic %>" height="300"></a>
+	
+					<% } -%>
 				
 					<div class="photoIndexInfo">
 						<a href="/users/<%= photo.user.id %>">

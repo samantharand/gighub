@@ -1,16 +1,28 @@
 <%- include('../partials/header.ejs') %>
 
-	<h2>NEW PICS</h2>
-	<p>5 max</p>
+<div class="eachPage">
 
-	<form method="POST" enctype="multipart/form-data" action="/photos/">
-			<div>
-				<label for="pic">PICS:</label>
-				<input multiple type="file" id="pic" name="pic">
-			</div>
-			
-			<button>UPLOAD PICS</button>
-		</fieldset>
-	</form>
+	<div class="pageName">
+	
+		<h3>new photos</h3>
+		
+	</div> 
 
+	<div class="newPages">
+
+		<form method="POST" enctype="multipart/form-data" action="/photos/">
+				<div>
+					<label for="pic">*PICS:</label>
+					<input multiple type="file" id="pic" name="pic" required>
+				</div>
+				
+				<button>UPLOAD PICS</button>
+			</fieldset>
+		</form>
+
+	</div>
+
+	<div class="required">
+		<p>*marks required, <strong>up to 5 at a time</strong></p>
+	</div>
 <%- include('../partials/footer.ejs') %>
