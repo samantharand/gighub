@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
 	},
 	profilePhoto:{ 
 		type: String,
-		default: "uploads/user/default.png"
+		default: "css/images/defaultuserphoto.png"
 	},
 	age: Number,
 	location: String,
