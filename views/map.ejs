@@ -1,0 +1,21 @@
+<%- include('./partials/header.ejs') %>
+
+<div class="eachPage">
+	<div class="pageName">
+	
+		<h3>map</h3>
+		
+	</div>
+
+	<div>
+		<i>map test</i>
+		<div id="map"> </div>
+
+	</div>
+
+	 <script src="https://maps.googleapis.com/maps/api/js?key=<%= googleMapsApiKey %>&callback=initMap"
+    async defer></script>
+
+    <script type="text/javascript" src="/js/main.js"></script>
+</div>
+<%- include('./partials/footer.ejs') %>
