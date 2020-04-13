@@ -191,7 +191,7 @@ button {
 /*trying to get the cool layout on event and home and show page vv */
 
 .eventInfo, .siteInfo {
-	background: url("./purpleGrain.png") thistle;
+	background: url("./divs/purpleGrain.png") thistle;
 	overflow: scroll;
 	opacity: 95%;
 	width: 350px;
@@ -208,7 +208,7 @@ button {
 }
 
 .comments {
-	background: url("./lightPurpleGrain.png") lavenderblush;
+	background: url("./divs/lightPurpleGrain.png") lavenderblush;
 	opacity: 95%;
 	overflow: scroll;
 	height: 300px;
@@ -293,7 +293,7 @@ button {
 
 .basicUserInfo, .basicBandInfo {
 	width: 100%;
-	background: url('./purpleGrain.png');
+	background: url('./divs/purpleGrain.png');
 	box-shadow: -9px -5px 11px -1px rgba(36,36,36,0.26);
 	margin-left: 200px;
 	margin-top: 80px;
