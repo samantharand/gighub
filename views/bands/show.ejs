@@ -26,6 +26,10 @@
 			
 			<% } -%>
 
+			<% if (band.song) { -%>
+				<p>check out our music<a href="<%= band.song %>" target="_blank">here.</a></p>
+			<% } -%>
+
 			<%if(userId == band.user._id){%>
 				
 				(<a href="/bands/<%=band.id%>/edit">EDIT</a>)
