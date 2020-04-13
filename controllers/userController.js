@@ -106,7 +106,7 @@ router.delete('/:id', async (req, res, next) => {
 				console.log("these are the comments that are not by the current user\n")
 				console.log(newComments)
 				allEventsUserHasCommentedOn[i].comments = newComments
-				allEventsUserHasCommentedOn[i].save()
+				await allEventsUserHasCommentedOn[i].save()
 				console.log("this is all the new all events comments")
 				console.log(allEventsUserHasCommentedOn[i]) 
 			}
