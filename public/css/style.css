@@ -10,6 +10,12 @@ body {
 	/*justify-content: center;*/
 }
 
+.appName {
+	display: flex;
+	/*justify-content: flex-start;*/
+	font-size: 2em;
+}
+
 .entireSite {
 	width: 75vw;
 	height: 85vh;
