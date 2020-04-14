@@ -28,6 +28,7 @@ router.delete("/:eventId/:commentId", async (req, res, next) => {
        const commentToRemove = await foundEvent.comments.id(req.params.commentId).remove() 
        console.log(commentToRemove)
       foundEvent.save()
+      req.session.message = "comment delted"
       res.redirect(`/events/${req.params.eventId}`)
     }catch(error){
       next(error)

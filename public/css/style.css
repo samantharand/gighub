@@ -76,6 +76,10 @@ h2 {
 	font-size: .75em;
 }
 
+.message {
+	justify-content: center;
+}
+
 .errorMessage {
 	color: maroon;
 	font-weight: 200;
