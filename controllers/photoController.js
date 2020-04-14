@@ -53,7 +53,7 @@ router.post('/', upload.array('pic', 5), async (req, res, next) => {
 			console.log("new photo vv");
 			console.log(newPhoto);
 		}
-
+		req.session.message = "photos added"
 		res.redirect('/photos')
 	} catch (error) {
 		next(error)

@@ -48,7 +48,7 @@ router.post('/', upload.single("bandPhoto"), async (req, res, next) => {
   		}
   		const createdBand = await Band.create(bandToCreate)
   		console.log(createdBand)
-  		req.session.message = "you made a band"
+  		req.session.message = "Band created!"
   		res.redirect(`/bands/${createdBand.id}`)
   	}catch(error){
   		next(error)
