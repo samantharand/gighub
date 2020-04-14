@@ -110,6 +110,7 @@ router.post('/login', async (req, res, next) => {
 // destroy
 router.get('/logout', async (req, res) => {
 	await req.session.destroy()
+	// req.session.message = "see you later! :)"
 	res.redirect('/auth/login')
 })
 

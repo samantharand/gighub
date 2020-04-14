@@ -58,7 +58,7 @@ h2 {
 	letter-spacing: 2em;
 }
 
-.authPages, .required, .errorMessage, .editPages, .newPages, .contactPage {
+.authPages, .required, .message, .editPages, .newPages, .contactPage {
 	display: flex;
 	flex-direction: column;
 	border: 1px #4E5340 solid;
@@ -68,7 +68,7 @@ h2 {
 	margin: 0 auto;
 }
 
-.required, .errorMessage {
+.required, .message {
 	border: none;
 	padding: 0;
 	flex-direction: row;
@@ -79,6 +79,10 @@ h2 {
 .errorMessage {
 	color: maroon;
 	font-weight: 200;
+}
+
+.deletedMessage {
+	margin-right: 140px;
 }
 
 .goodMessage {

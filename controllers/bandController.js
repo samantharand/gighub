@@ -29,9 +29,9 @@ router.get('/', async (req, res, next) => {
   		next(error)
   	}
   })
-router.get('/new', requireAuth,  (req, res) => {
+  router.get('/new', requireAuth,  (req, res) => {
   
-  	res.render('bands/new.ejs')
+  res.render('bands/new.ejs')
   
 })
 
@@ -49,7 +49,7 @@ router.post('/', upload.single("bandPhoto"), async (req, res, next) => {
   		const createdBand = await Band.create(bandToCreate)
   		console.log(createdBand)
   		req.session.message = "you made a band"
-  		res.redirect('/')
+  		res.redirect(`/bands/${createdBand.id}`)
   	}catch(error){
   		next(error)
   	}
@@ -70,7 +70,7 @@ router.get("/:id/edit", async (req, res, next) => {
   	console.log('foundBand.user', foundBand.user)
   	console.log("foundBand.user.id", foundBand.user._id)
   	if(req.session.userId == foundBand.user._id){
-  	res.render('bands/edit.ejs', {band:foundBand})
+      res.render('bands/edit.ejs', {band:foundBand})
   	}else{
   		res.render('auth/accessDenied.ejs')
   	}	
@@ -91,6 +91,7 @@ router.put("/:id", upload.single('bandPhoto'), async (req, res, next) => {
   })
 router.delete("/:id", async (req, res, next) => {
   try {
+      req.session.message = "band deleted"
   		const deletedBand = await Band.findByIdAndRemove(req.params.id)
   		res.redirect('/bands')
   	}catch(error){

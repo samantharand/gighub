@@ -61,7 +61,7 @@ router.post('/', upload.single('eventPhoto'), async (req, res, next) => {
 	  		const createdEvent = await Event.create(eventToCreate)
 	  		console.log(createdEvent)
 	  		req.session.message = `${createdEvent.name} added!`
-	  		res.redirect('/')
+	  		res.redirect(`/events/${createdEvent.id}`)
   		
 	
   	}catch(error){
@@ -119,6 +119,7 @@ router.delete("/:id", async (req, res, next) => {
   try {
   		const foundEvent = await Event.findById(req.params.id)
   		if(req.session.userId == foundEvent.user._id){
+        req.session.message = "event deleted"
   			const deletedEvent = await Event.findByIdAndRemove(req.params.id)
   			res.redirect('/events')
   		}else{
