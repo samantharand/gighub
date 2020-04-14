@@ -60,7 +60,7 @@ router.post('/', upload.single('eventPhoto'), async (req, res, next) => {
 	  		// console.log(eventToCreate)
 	  		const createdEvent = await Event.create(eventToCreate)
 	  		console.log(createdEvent)
-	  		req.session.message = `${createdEvent.name} added!`
+	  		req.session.message = `${createdEvent.name} created!`
 	  		res.redirect(`/events/${createdEvent.id}`)
   		
 	

@@ -59,9 +59,9 @@ router.post('/register', upload.single('profilePhoto'), async (req, res, next) =
 			req.session.userId = createdUser._id
 			req.session.username = createdUser.username
 
-			req.session.message = "account created :)"
+			req.session.message = `account created :) \n\n edit your profile pic in your edit settings or leave it the lovely shade of purple`
 			console.log(createdUser);
-			res.redirect('/')
+			res.redirect(`/users/${createdUser.id}`)
 		}
 		// redirect to home page with message welcoming them
 	} catch (error) {

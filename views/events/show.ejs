@@ -3,6 +3,8 @@
 
 	<div class="entireEvent">
 
+		<%= message %>
+
 		<div class="eventInfo">
 
 			<h2><%= event.name %></h2>
@@ -10,7 +12,9 @@
 			
 			<p><strong>When:</strong> <%= event.date.toDateString() %> @ <%= event.time.toLocaleString()%></p>
 
-			
+			<% if (event.details) { -%>
+				<p><strong>Details: </strong><%= event.details %></p>
+			<% } -%>
 			<% if (loggedIn) { -%>
 				
 				<% if (event.attendees.find( ({_id}) => _id == userId  )) { -%>
@@ -83,11 +87,11 @@
 				</form>
 
 
-			<div class="message">
+<!-- 			<div class="message">
 				
-				<p class="deletedMessage"><%= message %></p>
+				<p class="deletedMessage">commentMessage </p>
 
-			</div>
+			</div> -->
 			
 			<div class="commentsDisplay">
 			
