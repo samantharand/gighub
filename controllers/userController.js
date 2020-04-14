@@ -39,6 +39,7 @@ router.get('/', async (req, res, next) => {
 // show
 router.get('/:id',requireAuth, async (req, res, next) => {
 	try {
+
 		// const commentsToDelete = await allEventsUserHasCommentedOn.comments.id(req.params.id).remove()
 		// console.log(allUserComments)
 		const allEvents = await Event.find()
@@ -97,6 +98,17 @@ router.put('/:id', upload.single('profilePhoto'), async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
   		if(req.session.userId == req.params.id){
+  			const allEventsUserIsAttending = await Event.find({'attendees._id': req.params.id})
+  			 for(let i = 0; i < allEventsUserIsAttending.length; i++){
+  			 	console.log('this is all the attendess of the events')
+  			 	console.log(allEventsUserIsAttending[i].attendees) 
+  			 	const newAttendees = await allEventsUserIsAttending[i].attendees.filter(attendee => attendee._id != req.params.id)
+  			 	console.log("thse are the new list of attendees")
+  			 	console.log(newAttendees)
+  			 	allEventsUserIsAttending[i].attendees = newAttendees
+  			 	await allEventsUserIsAttending[i].save()
+
+  			 }
 			const allEventsUserHasCommentedOn = await Event.find({'comments.user': req.params.id})
 			console.log(allEventsUserHasCommentedOn)
 			for(let i = 0; i < allEventsUserHasCommentedOn.length; i++){
